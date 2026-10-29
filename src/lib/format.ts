@@ -1,8 +1,4 @@
-export type Money = {
-  /** Amount in minor units (cents) to avoid floating-point errors. */
-  amountMinor: number;
-  currency: 'EUR' | 'USD';
-};
+import type { Money } from '@/domain';
 
 export function formatPrice({ amountMinor, currency }: Money, locale: string): string {
   return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(amountMinor / 100);

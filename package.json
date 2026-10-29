@@ -76,6 +76,17 @@
       "!src/app/**",
       "!src/**/__tests__/**",
       "!src/data/mocks/**"
-    ]
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.[jt]s?(x)"
+    ],
+    "coverageThreshold": {
+      "./src/domain/": {
+        "lines": 90,
+        "branches": 90,
+        "functions": 90,
+        "statements": 90
+      }
+    }
   }
 }
