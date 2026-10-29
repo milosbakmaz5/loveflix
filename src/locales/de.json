@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "LoveFlix",
+    "tagline": "Tauche ein in Premium-Kurzromanzen."
+  },
+  "common": {
+    "retry": "Erneut versuchen",
+    "error": "Etwas ist schiefgelaufen.",
+    "loading": "Wird geladen…"
+  }
+}
