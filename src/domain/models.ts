@@ -24,7 +24,14 @@ export type CastMember = {
   id: CastMemberId;
   name: string;
   role: string;
-  avatar: ImageRef;
+  /** Missing when there is no photo — the UI falls back to initials. */
+  avatar?: ImageRef;
+};
+
+export type UserProfile = {
+  id: string;
+  displayName: string;
+  avatar?: ImageRef;
 };
 
 export type Series = {

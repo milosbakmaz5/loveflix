@@ -3,6 +3,15 @@ const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 const prettierConfig = require('eslint-config-prettier');
 
+const themePalettePattern = {
+  group: ['@/theme/*'],
+  message: "Import tokens from '@/theme'. Components use semantic tokens, never the core palette.",
+};
+const mockDataPattern = {
+  group: ['@/data/mocks', '@/data/mocks/*'],
+  message: 'Mock data is only read by the mock repository. Use the repository / query hooks.',
+};
+
 module.exports = defineConfig([
   expoConfig,
   prettierConfig,
@@ -24,18 +33,14 @@ module.exports = defineConfig([
       'react-hooks/exhaustive-deps': 'error',
       'react/no-array-index-key': 'error',
       'import/no-default-export': 'error',
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            {
-              group: ['@/theme/*'],
-              message:
-                "Import tokens from '@/theme'. Components use semantic tokens, never the core palette.",
-            },
-          ],
-        },
-      ],
+      'no-restricted-imports': ['error', { patterns: [themePalettePattern, mockDataPattern] }],
+    },
+  },
+  {
+    // The data layer is the only place allowed to read the mock fixtures.
+    files: ['src/data/**'],
+    rules: {
+      'no-restricted-imports': ['error', { patterns: [themePalettePattern] }],
     },
   },
   {
