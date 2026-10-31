@@ -15,6 +15,7 @@ import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { createMockRepositories, RepositoryProvider } from '@/data';
 import { createQueryClient } from '@/lib/queryClient';
 import { backgroundColors, borderColors, textColors } from '@/theme';
 
@@ -34,6 +35,7 @@ const navigationTheme = {
 
 export default function RootLayout() {
   const [queryClient] = useState(createQueryClient);
+  const [repositories] = useState(() => createMockRepositories());
   const [fontsLoaded, fontError] = useFonts({
     PlayfairDisplay_600SemiBold,
     PlayfairDisplay_700Bold,
@@ -56,17 +58,19 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={styles.root}>
       <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider value={navigationTheme}>
-            <StatusBar style="light" />
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: backgroundColors.screen },
-              }}
-            />
-          </ThemeProvider>
-        </QueryClientProvider>
+        <RepositoryProvider repositories={repositories}>
+          <QueryClientProvider client={queryClient}>
+            <ThemeProvider value={navigationTheme}>
+              <StatusBar style="light" />
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: { backgroundColor: backgroundColors.screen },
+                }}
+              />
+            </ThemeProvider>
+          </QueryClientProvider>
+        </RepositoryProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
