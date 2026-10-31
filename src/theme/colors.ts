@@ -17,7 +17,10 @@ export const backgroundColors = {
   surfaceRaised: palette.navy850,
   surfaceSelected: palette.slate800,
   surfaceSelectedBrand: palette.teal900,
+  /** Low-contrast fill for small tags ("Ep 5", counts) on images and surfaces. */
+  subtle: palette.white10,
   brand: palette.cyan400,
+  accent: palette.violet400,
   overlay: palette.black60,
   transparent: palette.transparent,
 } as const;
@@ -30,6 +33,7 @@ export const borderColors = {
 export const iconColors = {
   primary: palette.white,
   secondary: palette.white65,
+  muted: palette.white40,
   brand: palette.cyan400,
   accent: palette.violet400,
   onBrand: palette.ink950,
@@ -48,3 +52,4 @@ export type TextColor = keyof typeof textColors;
 export type BackgroundColor = keyof typeof backgroundColors;
 export type BorderColor = keyof typeof borderColors;
 export type IconColor = keyof typeof iconColors;
+export type GradientName = keyof typeof gradients;

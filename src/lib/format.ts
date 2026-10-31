@@ -27,3 +27,8 @@ export function formatDuration(totalSeconds: number): string {
   const seconds = safe % 60;
   return `${minutes}:${String(seconds).padStart(2, '0')}`;
 }
+
+/** Short decimal for UI meta ("1.5" / "1,5"), at most one fraction digit. */
+export function formatDecimal(value: number, locale: string): string {
+  return new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }).format(value);
+}

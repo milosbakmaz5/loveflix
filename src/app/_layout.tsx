@@ -15,7 +15,7 @@ import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { createMockRepositories, RepositoryProvider } from '@/data';
+import { createMockRepositories, devSettings, RepositoryProvider } from '@/data';
 import { createQueryClient } from '@/lib/queryClient';
 import { backgroundColors, borderColors, textColors } from '@/theme';
 
@@ -35,7 +35,9 @@ const navigationTheme = {
 
 export default function RootLayout() {
   const [queryClient] = useState(createQueryClient);
-  const [repositories] = useState(() => createMockRepositories());
+  const [repositories] = useState(() =>
+    createMockRepositories({ shouldFail: () => devSettings.simulateNetworkErrors }),
+  );
   const [fontsLoaded, fontError] = useFonts({
     PlayfairDisplay_600SemiBold,
     PlayfairDisplay_700Bold,

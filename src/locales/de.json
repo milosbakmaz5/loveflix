@@ -6,6 +6,33 @@
   "common": {
     "retry": "Erneut versuchen",
     "error": "Etwas ist schiefgelaufen.",
-    "loading": "Wird geladen…"
+    "loading": "Wird geladen…",
+    "seeAll": "Alle ansehen",
+    "notAvailable": "Nicht verfügbar"
+  },
+  "badges": {
+    "pro": "Pro",
+    "spotlight": "Spotlight",
+    "popular": "Beliebt",
+    "bestValue": "Bestpreis",
+    "locked": "Gesperrt"
+  },
+  "series": {
+    "episodeCount_one": "{{count}} Folge",
+    "episodeCount_other": "{{count}} Folgen",
+    "minutesPerEpisode": "{{minutes}} Min./F.",
+    "posterLabel_one": "{{title}}, {{count}} Folge",
+    "posterLabel_other": "{{title}}, {{count}} Folgen",
+    "posterLabelPro_one": "{{title}}, {{count}} Folge, Premium",
+    "posterLabelPro_other": "{{title}}, {{count}} Folgen, Premium"
+  },
+  "coins": {
+    "amount_one": "{{count}} Münze",
+    "amount_other": "{{count}} Münzen"
+  },
+  "states": {
+    "error": "Laden fehlgeschlagen. Prüfe deine Verbindung und versuche es erneut.",
+    "notFound": "Dieser Titel ist nicht mehr verfügbar.",
+    "empty": "Hier ist noch nichts."
   }
 }

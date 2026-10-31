@@ -16,6 +16,8 @@ export const typography = {
   h3: { fontFamily: fontFamilies.serifSemiBold, fontSize: 16, lineHeight: 22 },
   body: { fontFamily: fontFamilies.sansRegular, fontSize: 15, lineHeight: 22 },
   bodyStrong: { fontFamily: fontFamilies.sansSemiBold, fontSize: 15, lineHeight: 22 },
+  /** Large sans label (Buy button). */
+  buttonLarge: { fontFamily: fontFamilies.sansSemiBold, fontSize: 18, lineHeight: 24 },
   bodySmall: { fontFamily: fontFamilies.sansRegular, fontSize: 13, lineHeight: 18 },
   caption: { fontFamily: fontFamilies.sansMedium, fontSize: 11, lineHeight: 14 },
   label: {
@@ -23,6 +25,13 @@ export const typography = {
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  badge: {
+    fontFamily: fontFamilies.sansSemiBold,
+    fontSize: 10,
+    lineHeight: 14,
+    letterSpacing: 0.5,
     textTransform: 'uppercase',
   },
 } as const satisfies Record<string, TextStyle>;

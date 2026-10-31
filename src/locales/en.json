@@ -6,6 +6,33 @@
   "common": {
     "retry": "Try again",
     "error": "Something went wrong.",
-    "loading": "Loading…"
+    "loading": "Loading…",
+    "seeAll": "See all",
+    "notAvailable": "Not available"
+  },
+  "badges": {
+    "pro": "Pro",
+    "spotlight": "Spotlight",
+    "popular": "Popular",
+    "bestValue": "Best value",
+    "locked": "Locked"
+  },
+  "series": {
+    "episodeCount_one": "{{count}} Ep",
+    "episodeCount_other": "{{count}} Eps",
+    "minutesPerEpisode": "{{minutes}}m/ep",
+    "posterLabel_one": "{{title}}, {{count}} episode",
+    "posterLabel_other": "{{title}}, {{count}} episodes",
+    "posterLabelPro_one": "{{title}}, {{count}} episode, premium",
+    "posterLabelPro_other": "{{title}}, {{count}} episodes, premium"
+  },
+  "coins": {
+    "amount_one": "{{count}} Coin",
+    "amount_other": "{{count}} Coins"
+  },
+  "states": {
+    "error": "Couldn't load this. Check your connection and try again.",
+    "notFound": "This title isn't available any more.",
+    "empty": "Nothing here yet."
   }
 }

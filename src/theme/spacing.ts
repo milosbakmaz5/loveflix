@@ -27,6 +27,8 @@ export const iconSizes = {
   lg: 24,
 } as const;
 
+export type IconSize = keyof typeof iconSizes;
+
 export const layout = {
   screenGutter: spacing.md,
   sectionGap: spacing.xxl,
