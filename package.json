@@ -99,7 +99,18 @@
         "branches": 90,
         "functions": 90,
         "statements": 90
+      },
+      "./src/state/": {
+        "lines": 90,
+        "branches": 90,
+        "functions": 90,
+        "statements": 90
       }
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|standard-navigation|jotai))",
+      "/node_modules/react-native-reanimated/plugin/",
+      "/node_modules/@react-native/babel-preset/"
+    ]
   }
 }
