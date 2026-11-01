@@ -1,19 +1,12 @@
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { useState } from 'react';
 
-import { DEMO_CONFIG } from '@/config/demo';
-import {
-  buildUnlockOptions,
-  type Episode,
-  type MembershipPlan,
-  type UnlockOption,
-  type UnlockOptionType,
-} from '@/domain';
-import { activateMembershipAtom, entitlementsAtom, unlockWithCoinsAtom } from '@/state';
+import type { Episode, MembershipPlan, UnlockOption, UnlockOptionType } from '@/domain';
+import { activateMembershipAtom, unlockWithCoinsAtom } from '@/state';
 
-import { getSheetOptions } from '../utils/getSheetOptions';
+import { useUnlockOptions } from './useUnlockOptions';
 
 const DEFAULT_OPTION: UnlockOptionType = 'season';
 
@@ -33,20 +26,11 @@ type UnlockFlow = {
 };
 
 export function useUnlockFlow({ episode, seasonEpisodes, plans }: UnlockFlowOptions): UnlockFlow {
-  const entitlements = useAtomValue(entitlementsAtom);
   const unlockWithCoins = useSetAtom(unlockWithCoinsAtom);
   const activateMembership = useSetAtom(activateMembershipAtom);
   const [preferredType, setPreferredType] = useState(DEFAULT_OPTION);
 
-  const options = getSheetOptions(
-    buildUnlockOptions({
-      episode,
-      seasonEpisodes,
-      entitlements,
-      plans,
-      seasonDiscountRate: DEMO_CONFIG.seasonDiscountRate,
-    }),
-  );
+  const options = useUnlockOptions({ episode, seasonEpisodes, plans });
   const selected = options.find(({ type }) => type === preferredType) ?? options[0];
 
   function finish() {
@@ -62,7 +46,10 @@ export function useUnlockFlow({ episode, seasonEpisodes, plans }: UnlockFlowOpti
         if (result.ok) {
           finish();
         } else if (result.reason === 'insufficient_coins') {
-          router.push('/store');
+          router.push({
+            pathname: '/store',
+            params: { seriesId: episode.seriesId, episodeId: episode.id, option: option.type },
+          });
         } else {
           router.back();
         }

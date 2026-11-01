@@ -105,5 +105,33 @@
     "adOptionPrice": "Kostenlos",
     "confirm": "Jetzt freischalten",
     "dismiss": "Vielleicht später"
+  },
+  "store": {
+    "title": "Folge freischalten",
+    "episodeLocked": "Folge {{number}} • Gesperrt",
+    "unlockFor_one": "Für {{count}} Münze freischalten",
+    "unlockFor_other": "Für {{count}} Münzen freischalten",
+    "balance": "Dein Guthaben",
+    "recharge": "Münzen aufladen",
+    "bonus_one": "+ {{count}} Bonus",
+    "bonus_other": "+ {{count}} Bonus",
+    "orBestDeal": "Oder das beste Angebot",
+    "vipTitle": "VIP-Mitgliedschaft",
+    "vipDetail": "Kostenlose Folgen • Keine Werbung",
+    "period": {
+      "week": "/ Woche",
+      "month": "/ Monat"
+    },
+    "secure": "Sicher",
+    "appStorePay": "App Store Pay",
+    "buyCoins": "{{coins}} Münzen kaufen",
+    "startVip": "VIP starten",
+    "forPrice": "für {{price}}",
+    "forPricePer": {
+      "week": "für {{price}}/Woche",
+      "month": "für {{price}}/Monat"
+    },
+    "paymentFailed": "Die Zahlung ist fehlgeschlagen. Dir wurde nichts berechnet, bitte versuche es erneut.",
+    "legal": "Mit dem Kauf stimmst du unseren Nutzungsbedingungen zu. Abos verlängern sich automatisch, sofern sie nicht gekündigt werden."
   }
 }

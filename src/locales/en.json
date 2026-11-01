@@ -105,5 +105,33 @@
     "adOptionPrice": "Free",
     "confirm": "Unlock Now",
     "dismiss": "Maybe Later"
+  },
+  "store": {
+    "title": "Unlock Episode",
+    "episodeLocked": "Episode {{number}} • Locked",
+    "unlockFor_one": "Unlock for {{count}} Coin",
+    "unlockFor_other": "Unlock for {{count}} Coins",
+    "balance": "Your Balance",
+    "recharge": "Recharge Coins",
+    "bonus_one": "+ {{count}} Bonus",
+    "bonus_other": "+ {{count}} Bonus",
+    "orBestDeal": "Or best deal",
+    "vipTitle": "VIP Membership",
+    "vipDetail": "Free episodes • No ads",
+    "period": {
+      "week": "/ Week",
+      "month": "/ Month"
+    },
+    "secure": "Secure",
+    "appStorePay": "App Store Pay",
+    "buyCoins": "Buy {{coins}} Coins",
+    "startVip": "Start VIP",
+    "forPrice": "for {{price}}",
+    "forPricePer": {
+      "week": "for {{price}}/week",
+      "month": "for {{price}}/month"
+    },
+    "paymentFailed": "The payment didn't go through. You weren't charged, so please try again.",
+    "legal": "By purchasing, you agree to our Terms of Service. Subscriptions auto-renew unless canceled."
   }
 }

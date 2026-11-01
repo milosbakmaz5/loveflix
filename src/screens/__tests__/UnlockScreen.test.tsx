@@ -82,12 +82,15 @@ describe('UnlockScreen', () => {
   });
 
   it('opens the store and spends nothing when coins are short', async () => {
-    const { store } = await renderUnlock();
+    const { store, episodeId } = await renderUnlock();
     const balance = store.get(coinBalanceAtom);
 
     await pressConfirm();
 
-    expect(router.push).toHaveBeenCalledWith('/store');
+    expect(router.push).toHaveBeenCalledWith({
+      pathname: '/store',
+      params: { seriesId: SERIES_ID, episodeId, option: 'season' },
+    });
     expect(router.back).not.toHaveBeenCalled();
     expect(store.get(coinBalanceAtom)).toBe(balance);
   });
