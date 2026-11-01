@@ -42,7 +42,7 @@ describe('HomeScreen', () => {
     expect(screen.getByRole('header', { name: 'Echoes of Eternity' })).toBeOnTheScreen();
   });
 
-  it('opens the player from Watch now and from a poster', async () => {
+  it('opens the player from Watch now and Series detail from a poster', async () => {
     await renderHome();
 
     await fireEvent.press(screen.getByRole('button', { name: 'Watch now' }));
@@ -55,8 +55,8 @@ describe('HomeScreen', () => {
       screen.getByRole('button', { name: "The Billionaire's Secret, 45 episodes" }),
     );
     expect(router.push).toHaveBeenCalledWith({
-      pathname: '/watch/[seriesId]',
-      params: { seriesId: 'billionaires-secret' },
+      pathname: '/series/[id]',
+      params: { id: 'billionaires-secret' },
     });
   });
 

@@ -30,7 +30,19 @@
     "posterLabelPro_other": "{{title}}, {{count}} Folgen, Premium",
     "episodes_one": "{{count}} Episode",
     "episodes_other": "{{count}} Episoden",
-    "rating": "Bewertung {{rating}}"
+    "rating": "Bewertung {{rating}}",
+    "playEpisode": "Folge {{number}} abspielen",
+    "synopsis": "Handlung",
+    "whyYoullLoveIt": "Darum wirst du es lieben",
+    "cast": "Besetzung & Crew",
+    "episodesHeading": "Folgen",
+    "sort": "Sortieren",
+    "seasonSavings": "Spare {{percent}} % mit dem Paket",
+    "buySeason": "Ganze Staffel für {{price}} freischalten",
+    "episodeTitle": "{{number}}. {{title}}",
+    "unlock": "Freischalten",
+    "showMore": "Mehr Folgen anzeigen",
+    "related": "Das könnte dir auch gefallen"
   },
   "coins": {
     "amount_one": "{{count}} Münze",

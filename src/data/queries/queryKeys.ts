@@ -9,4 +9,5 @@ export const queryKeys = {
   currentUser: () => ['currentUser'] as const,
   coinPacks: () => ['store', 'coinPacks'] as const,
   membershipPlans: () => ['store', 'membershipPlans'] as const,
+  seasonBundlePrice: () => ['store', 'seasonBundlePrice'] as const,
 };

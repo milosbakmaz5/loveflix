@@ -3,5 +3,5 @@ export { createEpisodes } from './episodes';
 export { homeFeed } from './homeFeed';
 export { images, VIDEO_SOURCES } from './media';
 export { SERIES_IDS, seriesCatalog } from './series';
-export { coinPacks, membershipPlans } from './store';
+export { coinPacks, membershipPlans, seasonBundlePrice } from './store';
 export { currentUser } from './user';

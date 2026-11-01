@@ -82,6 +82,16 @@ describe('MockStoreRepository', () => {
   it('throws notFound for an unknown pack', async () => {
     await expectRepositoryError(store.purchaseCoinPack('missing'), 'notFound');
   });
+
+  it('prices and sells the season bundle', async () => {
+    const store = createMockStoreRepository({ latencyMs: 0 });
+
+    await expect(store.getSeasonBundlePrice()).resolves.toEqual({
+      amountMinor: 999,
+      currency: 'EUR',
+    });
+    await expect(store.purchaseSeason('s1')).resolves.toEqual({ seriesId: 's1' });
+  });
 });
 
 describe('simulation options', () => {

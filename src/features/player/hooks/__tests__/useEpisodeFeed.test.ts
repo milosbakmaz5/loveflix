@@ -44,6 +44,15 @@ describe('useEpisodeFeed', () => {
     expect(result.current.isWatchMode).toBe(false);
   });
 
+  it('starts playing right away with autoplay', async () => {
+    const listRef = { current: null };
+    const { result } = await renderHook(() =>
+      useEpisodeFeed({ episodes, initialIndex: 0, autoplay: true, listRef }),
+    );
+
+    expect(result.current.isWatchMode).toBe(true);
+  });
+
   it('follows the visible episode and ignores an empty update', async () => {
     const { result } = await renderFeed();
 

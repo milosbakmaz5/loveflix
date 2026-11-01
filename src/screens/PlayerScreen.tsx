@@ -15,9 +15,11 @@ type PlayerScreenProps = {
   seriesId: SeriesId;
   /** Episode number from the `?episode=N` route param. */
   episodeParam?: string;
+  /** Start playing right away, because the viewer already chose to (Play on Series detail). */
+  autoplay?: boolean;
 };
 
-export function PlayerScreen({ seriesId, episodeParam }: PlayerScreenProps) {
+export function PlayerScreen({ seriesId, episodeParam, autoplay = false }: PlayerScreenProps) {
   const series = useSeries(seriesId);
   const episodes = useEpisodes(seriesId);
   const error = series.error ?? episodes.error;
@@ -41,6 +43,7 @@ export function PlayerScreen({ seriesId, episodeParam }: PlayerScreenProps) {
           seriesTitle={series.data.title}
           episodes={episodes.data}
           initialIndex={getInitialEpisodeIndex(episodes.data, episodeParam)}
+          autoplay={autoplay}
         />
       )}
     </Screen>

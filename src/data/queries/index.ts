@@ -5,4 +5,6 @@ export { useEpisodes } from './useEpisodes';
 export { useHomeFeed } from './useHomeFeed';
 export { useMembershipPlans } from './useMembershipPlans';
 export { usePurchaseCoinPack } from './usePurchaseCoinPack';
+export { usePurchaseSeason } from './usePurchaseSeason';
+export { useSeasonBundlePrice } from './useSeasonBundlePrice';
 export { useSeries } from './useSeries';

@@ -9,7 +9,11 @@ export { isRepositoryError, RepositoryError, type RepositoryErrorKind } from './
 export { createMockCatalogRepository } from './MockCatalogRepository';
 export { createMockStoreRepository } from './MockStoreRepository';
 export type { MockRepositoryOptions, RepositoryOperation } from './simulate';
-export type { CoinPurchaseReceipt, StoreRepository } from './StoreRepository';
+export type {
+  CoinPurchaseReceipt,
+  SeasonPurchaseReceipt,
+  StoreRepository,
+} from './StoreRepository';
 
 export type Repositories = {
   catalog: CatalogRepository;

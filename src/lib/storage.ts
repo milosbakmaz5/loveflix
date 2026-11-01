@@ -5,6 +5,7 @@ export const STORAGE_KEYS = {
   coinBalance: 'wallet.coinBalance',
   unlockedEpisodeIds: 'entitlements.unlockedEpisodeIds',
   membership: 'entitlements.membership',
+  myListSeriesIds: 'series.myListSeriesIds',
 } as const;
 
 const mmkv = createMMKV({ id: 'loveflix' });

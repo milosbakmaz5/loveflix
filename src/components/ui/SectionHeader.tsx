@@ -29,7 +29,7 @@ export function SectionHeader({
         <Text variant={variant} accessibilityRole="header" numberOfLines={1}>
           {title}
         </Text>
-        {accessory}
+        <View>{accessory}</View>
       </View>
       {actionLabel && onAction && (
         <PressableScale

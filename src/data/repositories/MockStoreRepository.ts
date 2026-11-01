@@ -1,5 +1,5 @@
-import { type CoinPackId, totalCoins } from '@/domain';
-import { coinPacks, membershipPlans } from '@/data/mocks';
+import { type CoinPackId, type SeriesId, totalCoins } from '@/domain';
+import { coinPacks, membershipPlans, seasonBundlePrice } from '@/data/mocks';
 
 import { RepositoryError } from './errors';
 import { createSimulate, type MockRepositoryOptions } from './simulate';
@@ -19,5 +19,7 @@ export function createMockStoreRepository(options?: MockRepositoryOptions): Stor
         }
         return { packId, coinsGranted: totalCoins(pack) };
       }),
+    getSeasonBundlePrice: () => simulate('getSeasonBundlePrice', () => seasonBundlePrice),
+    purchaseSeason: (seriesId: SeriesId) => simulate('purchaseSeason', () => ({ seriesId })),
   };
 }

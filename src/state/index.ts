@@ -7,6 +7,7 @@
 export {
   activateMembershipAtom,
   creditCoinsAtom,
+  grantEpisodesAtom,
   resetDemoAtom,
   unlockWithAdAtom,
   unlockWithCoinsAtom,

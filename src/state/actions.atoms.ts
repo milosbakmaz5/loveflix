@@ -48,6 +48,11 @@ export const unlockWithAdAtom = atom(null, (get, set, episodeId: EpisodeId): voi
   set(storedUnlockedEpisodeIdsAtom, [...grantEpisodes(get(unlockedEpisodeIdsAtom), [episodeId])]);
 });
 
+/** Grants episodes paid for outside the wallet: the season bundle on Series detail. */
+export const grantEpisodesAtom = atom(null, (get, set, episodeIds: readonly EpisodeId[]): void => {
+  set(storedUnlockedEpisodeIdsAtom, [...grantEpisodes(get(unlockedEpisodeIdsAtom), episodeIds)]);
+});
+
 /** Mock subscription: an active membership unlocks every episode. */
 export const activateMembershipAtom = atom(null, (_get, set, planId: MembershipPlanId): void => {
   set(storedMembershipAtom, activateMembership(planId));

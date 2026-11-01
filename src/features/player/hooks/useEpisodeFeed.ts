@@ -26,17 +26,20 @@ type EpisodeFeedState = {
 type EpisodeFeedOptions = {
   episodes: readonly Episode[];
   initialIndex: number;
+  /** Start in watch mode instead of on the thumbnail and Watch button. */
+  autoplay?: boolean;
   listRef: RefObject<FlashListRef<Episode> | null>;
 };
 
 export function useEpisodeFeed({
   episodes,
   initialIndex,
+  autoplay = false,
   listRef,
 }: EpisodeFeedOptions): EpisodeFeedState {
   const entitlements = useAtomValue(entitlementsAtom);
   const [activeEpisodeId, setActiveEpisodeId] = useState(episodes[initialIndex]?.id);
-  const [isWatchMode, setIsWatchMode] = useState(false);
+  const [isWatchMode, setIsWatchMode] = useState(autoplay);
   // Only the episode that was paused keeps its frame; leaving it brings back the thumbnail.
   const [pausedEpisodeId, setPausedEpisodeId] = useState<EpisodeId | null>(null);
 

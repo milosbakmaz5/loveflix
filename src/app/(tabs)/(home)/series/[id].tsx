@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
 
-import { StackPlaceholderScreen } from '@/screens/StackPlaceholderScreen';
+import { SeriesDetailScreen } from '@/screens/SeriesDetailScreen';
 
 export default function SeriesRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  return <StackPlaceholderScreen seriesId={id} />;
+  return <SeriesDetailScreen seriesId={id} />;
 }

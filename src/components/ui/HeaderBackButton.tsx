@@ -4,6 +4,15 @@ import { useTranslation } from 'react-i18next';
 
 import { IconButton } from './IconButton';
 
+function goBack() {
+  // A screen opened from a link can have nothing behind it.
+  if (router.canGoBack()) {
+    router.back();
+  } else {
+    router.replace('/');
+  }
+}
+
 /** Standard `left` slot for a `secondary` Header. */
 export function HeaderBackButton() {
   const { t } = useTranslation();
@@ -12,7 +21,7 @@ export function HeaderBackButton() {
       icon={ChevronLeft}
       variant="filled"
       accessibilityLabel={t('common.back')}
-      onPress={() => router.back()}
+      onPress={goBack}
     />
   );
 }

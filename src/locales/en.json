@@ -30,7 +30,19 @@
     "posterLabelPro_other": "{{title}}, {{count}} episodes, premium",
     "episodes_one": "{{count}} Episode",
     "episodes_other": "{{count}} Episodes",
-    "rating": "Rated {{rating}}"
+    "rating": "Rated {{rating}}",
+    "playEpisode": "Play Ep {{number}}",
+    "synopsis": "Synopsis",
+    "whyYoullLoveIt": "Why you'll love it",
+    "cast": "Cast & Crew",
+    "episodesHeading": "Episodes",
+    "sort": "Sort",
+    "seasonSavings": "Save {{percent}}% with the bundle",
+    "buySeason": "Unlock Full Season for {{price}}",
+    "episodeTitle": "{{number}}. {{title}}",
+    "unlock": "Unlock",
+    "showMore": "Show more episodes",
+    "related": "You might also like"
   },
   "coins": {
     "amount_one": "{{count}} Coin",

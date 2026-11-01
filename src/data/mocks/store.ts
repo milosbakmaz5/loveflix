@@ -1,4 +1,4 @@
-import type { CoinPack, MembershipPlan } from '@/domain';
+import type { CoinPack, MembershipPlan, Money } from '@/domain';
 
 // Prices from the coin store design (1:970). Euros everywhere for consistency.
 export const coinPacks: readonly CoinPack[] = [
@@ -24,3 +24,6 @@ export const membershipPlans: readonly MembershipPlan[] = [
   { id: 'premium-monthly', price: { amountMinor: 999, currency: 'EUR' }, period: 'month' },
   { id: 'vip-weekly', price: { amountMinor: 499, currency: 'EUR' }, period: 'week' },
 ];
+
+// The price on the season banner of the series detail design (1:615).
+export const seasonBundlePrice: Money = { amountMinor: 999, currency: 'EUR' };

@@ -11,16 +11,22 @@ type EpisodeFeedProps = {
   seriesTitle: string;
   episodes: readonly Episode[];
   initialIndex: number;
+  autoplay?: boolean;
 };
 
 function getEpisodeKey(episode: Episode) {
   return episode.id;
 }
 
-export function EpisodeFeed({ seriesTitle, episodes, initialIndex }: EpisodeFeedProps) {
+export function EpisodeFeed({
+  seriesTitle,
+  episodes,
+  initialIndex,
+  autoplay = false,
+}: EpisodeFeedProps) {
   const { height } = useWindowDimensions();
   const listRef = useRef<FlashListRef<Episode>>(null);
-  const feed = useEpisodeFeed({ episodes, initialIndex, listRef });
+  const feed = useEpisodeFeed({ episodes, initialIndex, autoplay, listRef });
 
   return (
     <FlashList

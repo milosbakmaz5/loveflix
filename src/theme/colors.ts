@@ -30,7 +30,7 @@ export const backgroundColors = {
   overlay: palette.black60,
   /** Backdrop behind a floating card. */
   scrimStrong: palette.black85,
-  /** Even dimming over artwork that carries text (hero). */
+  /** Even dimming over artwork (hero text, locked episode thumbnails). */
   imageDim: palette.black35,
   /** Light block on dark ("Popular Micro Dramas" heading square). */
   inverse: palette.white,

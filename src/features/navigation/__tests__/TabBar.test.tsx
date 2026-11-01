@@ -5,7 +5,7 @@ import { TabBar } from '../TabBar';
 
 type TabBarProps = ComponentProps<typeof TabBar>;
 
-const routes = ['index', 'discover', 'romance', 'library', 'profile'].map((name) => ({
+const routes = ['(home)', 'discover', 'romance', 'library', 'profile'].map((name) => ({
   name,
   key: `${name}-key`,
   params: undefined,

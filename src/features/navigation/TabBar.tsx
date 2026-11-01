@@ -9,13 +9,13 @@ import { backgroundColors, borderColors, layout, spacing } from '@/theme';
 
 type TabBarProps = Parameters<NonNullable<ComponentProps<typeof Tabs>['tabBar']>>[0];
 
-type TabName = 'index' | 'discover' | 'romance' | 'library' | 'profile';
+type TabName = '(home)' | 'discover' | 'romance' | 'library' | 'profile';
 
 const TABS: Record<
   TabName,
-  { icon: LucideIcon; labelKey: 'tabs.home' | `tabs.${Exclude<TabName, 'index'>}` }
+  { icon: LucideIcon; labelKey: 'tabs.home' | `tabs.${Exclude<TabName, '(home)'>}` }
 > = {
-  index: { icon: House, labelKey: 'tabs.home' },
+  '(home)': { icon: House, labelKey: 'tabs.home' },
   discover: { icon: Compass, labelKey: 'tabs.discover' },
   romance: { icon: Heart, labelKey: 'tabs.romance' },
   library: { icon: Bookmark, labelKey: 'tabs.library' },
