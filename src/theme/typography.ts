@@ -14,6 +14,14 @@ export const typography = {
   h1: { fontFamily: fontFamilies.serifBold, fontSize: 24, lineHeight: 30 },
   h2: { fontFamily: fontFamilies.serifBold, fontSize: 20, lineHeight: 26 },
   h3: { fontFamily: fontFamilies.serifSemiBold, fontSize: 16, lineHeight: 22 },
+  /** Small serif line above a heading ("EPISODE 12"). */
+  overline: {
+    fontFamily: fontFamilies.serifSemiBold,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
   body: { fontFamily: fontFamilies.sansRegular, fontSize: 15, lineHeight: 22 },
   bodyStrong: { fontFamily: fontFamilies.sansSemiBold, fontSize: 15, lineHeight: 22 },
   /** Large sans label (Buy button). */

@@ -44,7 +44,10 @@ export function EpisodeSlide({
   const hasVideo = isActive && (isInWatchMode || (isUnlocked && isPaused));
 
   function openUnlock() {
-    router.push({ pathname: '/unlock/[episodeId]', params: { episodeId: episode.id } });
+    router.push({
+      pathname: '/unlock/[episodeId]',
+      params: { episodeId: episode.id, seriesId: episode.seriesId },
+    });
   }
 
   return (

@@ -28,6 +28,8 @@ export const backgroundColors = {
   /** Soft violet fill (Spotlight badge). */
   accentSubtle: palette.violet25,
   overlay: palette.black60,
+  /** Backdrop behind a floating card. */
+  scrimStrong: palette.black85,
   /** Even dimming over artwork that carries text (hero). */
   imageDim: palette.black35,
   /** Light block on dark ("Popular Micro Dramas" heading square). */

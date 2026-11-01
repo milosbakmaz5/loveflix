@@ -104,7 +104,7 @@ describe('EpisodeSlide', () => {
     expect(router.push).toHaveBeenCalledTimes(2);
     expect(router.push).toHaveBeenCalledWith({
       pathname: '/unlock/[episodeId]',
-      params: { episodeId: 's1-e5' },
+      params: { episodeId: 's1-e5', seriesId: 's1' },
     });
     expect(handlers.onPlay).not.toHaveBeenCalled();
   });

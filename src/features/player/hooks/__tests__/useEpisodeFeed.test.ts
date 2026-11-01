@@ -1,10 +1,12 @@
 import type { FlashListRef, ViewToken } from '@shopify/flash-list';
 import { act, renderHook } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
-import type { RefObject } from 'react';
+import { createStore, Provider } from 'jotai';
+import { createElement, type ReactNode, type RefObject } from 'react';
 
 import type { Episode } from '@/domain';
 import { makeEpisode } from '@/domain/__tests__/fixtures';
+import { resetDemoAtom, unlockWithAdAtom } from '@/state';
 
 import { useEpisodeFeed } from '../useEpisodeFeed';
 
@@ -132,5 +134,52 @@ describe('useEpisodeFeed', () => {
 
     expect(scrollToIndex).not.toHaveBeenCalled();
     expect(result.current.isWatchMode).toBe(false);
+  });
+
+  describe('unlocking', () => {
+    // Saved state lives in storage, which outlives each test's store.
+    beforeEach(() => {
+      createStore().set(resetDemoAtom);
+    });
+
+    async function renderWithStore() {
+      const store = createStore();
+      const scrollToIndex = jest.fn().mockResolvedValue(undefined);
+      const listRef = { current: { scrollToIndex } } as unknown as RefObject<FlashListRef<Episode>>;
+      const { result } = await renderHook(
+        () => useEpisodeFeed({ episodes, initialIndex: 2, listRef }),
+        {
+          wrapper: ({ children }: { children: ReactNode }) =>
+            createElement(Provider, { store }, children),
+        },
+      );
+      return { result, store };
+    }
+
+    it('starts playing when the episode on screen gets unlocked', async () => {
+      const { result, store } = await renderWithStore();
+      expect(result.current.isWatchMode).toBe(false);
+
+      await act(async () => store.set(unlockWithAdAtom, 's1-e5'));
+
+      expect(result.current.isWatchMode).toBe(true);
+      expect(result.current.isPaused).toBe(false);
+    });
+
+    it('does not start when another episode gets unlocked', async () => {
+      const { result, store } = await renderWithStore();
+
+      await act(async () => store.set(unlockWithAdAtom, 's1-e9'));
+
+      expect(result.current.isWatchMode).toBe(false);
+    });
+
+    it('does not start when moving onto an episode that is already unlocked', async () => {
+      const { result } = await renderWithStore();
+
+      await act(async () => result.current.onViewableItemsChanged(viewable(makeEpisode(4))));
+
+      expect(result.current.isWatchMode).toBe(false);
+    });
   });
 });

@@ -10,7 +10,8 @@
     "seeAll": "See all",
     "notAvailable": "Not available",
     "back": "Back",
-    "comingSoon": "Coming soon"
+    "comingSoon": "Coming soon",
+    "close": "Close"
   },
   "badges": {
     "pro": "Pro",
@@ -84,5 +85,25 @@
     "forward": "Forward {{seconds}} seconds",
     "rewindShort": "-{{seconds}}s",
     "forwardShort": "+{{seconds}}s"
+  },
+  "unlock": {
+    "episode": "Episode {{number}}",
+    "title": "Continue the romance",
+    "subtitle": "Unlock all episodes and discover what happens next in their journey.",
+    "episodeOption": "Unlock Episode",
+    "episodeOptionDetail": "One-time access",
+    "seasonOption": "Unlock Full Season",
+    "seasonOptionDetail": "Episodes {{from}} - {{to}}",
+    "membershipOption": "Premium Membership",
+    "membershipOptionDetail": "Unlimited access",
+    "pricePer": {
+      "month": "{{price}}/mo",
+      "week": "{{price}}/wk"
+    },
+    "adOption": "Watch an Ad",
+    "adOptionDetail": "Unlock this episode for free",
+    "adOptionPrice": "Free",
+    "confirm": "Unlock Now",
+    "dismiss": "Maybe Later"
   }
 }

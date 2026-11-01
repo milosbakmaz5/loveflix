@@ -40,6 +40,19 @@ export function useEpisodeFeed({
   // Only the episode that was paused keeps its frame; leaving it brings back the thumbnail.
   const [pausedEpisodeId, setPausedEpisodeId] = useState<EpisodeId | null>(null);
 
+  // Unlocking the episode on screen means the viewer paid to watch it, so it starts right away.
+  const isActiveUnlocked = episodes.some(
+    (episode) => episode.id === activeEpisodeId && isEpisodeUnlocked(episode, entitlements),
+  );
+  const [seenActive, setSeenActive] = useState({ id: activeEpisodeId, isActiveUnlocked });
+  if (seenActive.id !== activeEpisodeId || seenActive.isActiveUnlocked !== isActiveUnlocked) {
+    if (seenActive.id === activeEpisodeId && isActiveUnlocked) {
+      setIsWatchMode(true);
+      setPausedEpisodeId(null);
+    }
+    setSeenActive({ id: activeEpisodeId, isActiveUnlocked });
+  }
+
   // useCallback: the list requires a stable viewability callback.
   const onViewableItemsChanged = useCallback(
     ({ viewableItems }: { viewableItems: ViewToken<Episode>[] }) => {

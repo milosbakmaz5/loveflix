@@ -72,8 +72,14 @@ export default function RootLayout() {
               >
                 <Stack.Screen
                   name="unlock/[episodeId]"
-                  options={{ presentation: 'formSheet', sheetAllowedDetents: 'fitToContents' }}
+                  options={{
+                    presentation: 'transparentModal',
+                    animation: 'fade',
+                    contentStyle: { backgroundColor: backgroundColors.transparent },
+                  }}
                 />
+                {/* Opens over the unlock card, where a plain push would become a page sheet. */}
+                <Stack.Screen name="store" options={{ presentation: 'fullScreenModal' }} />
               </Stack>
             </ThemeProvider>
           </QueryClientProvider>

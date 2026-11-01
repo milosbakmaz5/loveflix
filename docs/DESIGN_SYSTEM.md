@@ -47,6 +47,7 @@ Two layers. **Core tokens** (`src/theme/palette.ts`) hold raw values and are pri
 |                    | `surfaceSelectedBrand`                                   | `teal900`    | Selected coin pack                                       |
 |                    | `brand`                                                  | `cyan400`    | Primary CTAs, active chip                                |
 |                    | `overlay`                                                | `black60`    | Lock overlay on posters/video                            |
+|                    | `scrimStrong`                                            | `black85`    | Backdrop behind a floating card                          |
 | `borderColors`     | `default`                                                | `white10`    | Card / button outlines                                   |
 |                    | `selected`                                               | `cyan400`    | Selected card outline                                    |
 | `iconColors`       | `primary` · `secondary` · `brand` · `accent` · `onBrand` | same as text | Icons                                                    |
@@ -69,6 +70,7 @@ Two layers. **Core tokens** (`src/theme/palette.ts`) hold raw values and are pri
 | `bodyStrong`  | Inter            | 15 / 22            | 600                                | Button labels, option titles                     |
 | `buttonLarge` | Inter            | 18 / 24            | 600                                | Large sans CTA label ("Buy 800 Coins", gradient) |
 | `bodySmall`   | Inter            | 13 / 18            | 400                                | Meta, subtitles                                  |
+| `overline`    | Playfair Display | 13 / 18, +1, upper | 600                                | Line above a heading ("EPISODE 12")              |
 | `caption`     | Inter            | 11 / 14            | 500                                | Poster meta, tab labels                          |
 | `badge`       | Inter            | 10 / 14            | 600, uppercase, letter-spacing 0.5 | Badges (PRO, POPULAR, BEST VALUE)                |
 | `label`       | Inter            | 12 / 16            | 600, uppercase, letter-spacing 1   | "SETTINGS & MORE", "OR BEST DEAL", badges        |

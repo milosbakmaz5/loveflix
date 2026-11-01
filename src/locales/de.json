@@ -10,7 +10,8 @@
     "seeAll": "Alle ansehen",
     "notAvailable": "Nicht verfügbar",
     "back": "Zurück",
-    "comingSoon": "Demnächst verfügbar"
+    "comingSoon": "Demnächst verfügbar",
+    "close": "Schließen"
   },
   "badges": {
     "pro": "Pro",
@@ -84,5 +85,25 @@
     "forward": "{{seconds}} Sekunden vor",
     "rewindShort": "-{{seconds}} s",
     "forwardShort": "+{{seconds}} s"
+  },
+  "unlock": {
+    "episode": "Folge {{number}}",
+    "title": "Die Romanze geht weiter",
+    "subtitle": "Schalte alle Folgen frei und erfahre, wie ihre Reise weitergeht.",
+    "episodeOption": "Folge freischalten",
+    "episodeOptionDetail": "Einmaliger Zugang",
+    "seasonOption": "Ganze Staffel freischalten",
+    "seasonOptionDetail": "Folgen {{from}} - {{to}}",
+    "membershipOption": "Premium-Mitgliedschaft",
+    "membershipOptionDetail": "Unbegrenzter Zugang",
+    "pricePer": {
+      "month": "{{price}}/Mon.",
+      "week": "{{price}}/Wo."
+    },
+    "adOption": "Werbung ansehen",
+    "adOptionDetail": "Schalte diese Folge kostenlos frei",
+    "adOptionPrice": "Kostenlos",
+    "confirm": "Jetzt freischalten",
+    "dismiss": "Vielleicht später"
   }
 }
