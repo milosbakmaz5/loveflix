@@ -31,5 +31,4 @@ export const images = {
 export const VIDEO_SOURCES = [
   'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
   'https://test-streams.mux.dev/tos_ismc/main.m3u8',
-  'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8',
 ] as const;
