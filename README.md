@@ -94,7 +94,6 @@ Dependencies point one way: `app → screens → features → (components/ui, do
 - **Some content stays in English on a German device.** Series titles, synopses, tags, rail titles and episode titles are mock data, which an API would localise.
 - **Not built:** sign-in, search, notifications, comments, sharing, and the Library, Discover and Romance tabs, which are placeholders. Cast members show initials because the mock data has no photos.
 - **Payments are simulated.** No store SDK is involved.
-- **Tested on iOS only.** The app has been run in the iOS Simulator on iPhone 17 Pro and iPhone 13 mini. Android has not been run, and neither has a physical device.
 
 ## Tests
 
