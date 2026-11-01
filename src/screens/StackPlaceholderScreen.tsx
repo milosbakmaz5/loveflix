@@ -15,7 +15,7 @@ type StackPlaceholderScreenProps = {
   seriesId: SeriesId;
 };
 
-/** Stands in for Series detail and the Player until those steps replace it. */
+/** Stands in for Series detail until that step replaces it. */
 export function StackPlaceholderScreen({ seriesId }: StackPlaceholderScreenProps) {
   const { t } = useTranslation();
   const series = useSeries(seriesId);

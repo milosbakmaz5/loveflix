@@ -12,8 +12,9 @@ type SeriesRailProps = {
   series: readonly Series[];
 };
 
+// Goes straight to the player until Series detail is built.
 function openSeries(series: Series) {
-  router.push({ pathname: '/series/[id]', params: { id: series.id } });
+  router.push({ pathname: '/watch/[seriesId]', params: { seriesId: series.id } });
 }
 
 function renderPoster({ item }: { item: Series }) {

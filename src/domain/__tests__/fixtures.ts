@@ -12,6 +12,8 @@ export function makeEpisode(number: number, overrides: Partial<Episode> = {}): E
     thumbnail: IMAGE,
     videoUri: 'https://example.com/video.m3u8',
     access: number <= 4 ? { type: 'free' } : { type: 'coins', price: 20 },
+    likeCount: 12000,
+    commentCount: 342,
     ...overrides,
   };
 }

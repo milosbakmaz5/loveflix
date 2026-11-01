@@ -30,6 +30,10 @@ const BILLIONAIRES_SECRET_THUMBNAILS: Readonly<Record<number, ImageRef>> = {
   6: images.episodes.billionairesSecret6,
 };
 
+// Every episode in the design shows the same counts.
+const DESIGN_LIKE_COUNT = 12000;
+const DESIGN_COMMENT_COUNT = 342;
+
 function cycle<T>(items: readonly T[], index: number): T {
   const item = items[index % items.length];
   if (item === undefined) {
@@ -70,6 +74,8 @@ export function createEpisodes(series: Series): Episode[] {
       thumbnail: thumbnailFor(series, number),
       videoUri: cycle(VIDEO_SOURCES, index),
       access: accessFor(number),
+      likeCount: DESIGN_LIKE_COUNT,
+      commentCount: DESIGN_COMMENT_COUNT,
     };
   });
 }

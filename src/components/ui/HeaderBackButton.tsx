@@ -10,7 +10,7 @@ export function HeaderBackButton() {
   return (
     <IconButton
       icon={ChevronLeft}
-      variant="ghost"
+      variant="filled"
       accessibilityLabel={t('common.back')}
       onPress={() => router.back()}
     />

@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
 
-import { StackPlaceholderScreen } from '@/screens/StackPlaceholderScreen';
+import { PlayerScreen } from '@/screens/PlayerScreen';
 
 export default function WatchRoute() {
-  const { seriesId } = useLocalSearchParams<{ seriesId: string }>();
-  return <StackPlaceholderScreen seriesId={seriesId} />;
+  const { seriesId, episode } = useLocalSearchParams<{ seriesId: string; episode?: string }>();
+  return <PlayerScreen seriesId={seriesId} episodeParam={episode} />;
 }

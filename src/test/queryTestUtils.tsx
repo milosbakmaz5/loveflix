@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { createMockRepositories, type Repositories, RepositoryProvider } from '@/data';
 
@@ -25,9 +26,11 @@ export function createTestWrapper({
 }: TestWrapperOptions = {}) {
   function TestWrapper({ children }: { children: ReactNode }) {
     return (
-      <RepositoryProvider repositories={repositories}>
-        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-      </RepositoryProvider>
+      <GestureHandlerRootView>
+        <RepositoryProvider repositories={repositories}>
+          <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+        </RepositoryProvider>
+      </GestureHandlerRootView>
     );
   }
   return TestWrapper;

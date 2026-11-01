@@ -12,5 +12,15 @@ jest.mock(
   () => jest.requireActual('react-native-safe-area-context/jest/mock').default,
 );
 
+// expo-video needs its native module; tests drive a fake player instead.
+jest.mock('expo-video', () => jest.requireActual('@/test/fakeExpoVideo'));
+
+// Gesture Handler asks Worklets for the native UI runtime on load, which doesn't exist under Jest.
+jest.mock('react-native-worklets', () => ({
+  ...jest.requireActual<typeof import('react-native-worklets')>('react-native-worklets'),
+  getUIRuntimeHolder: () => ({}),
+}));
+
+import 'react-native-gesture-handler/jestSetup';
 import '@shopify/flash-list/jestSetup';
 import '@/lib/i18n';

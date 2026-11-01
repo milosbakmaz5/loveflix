@@ -15,6 +15,8 @@ Two layers. **Core tokens** (`src/theme/palette.ts`) hold raw values and are pri
 | `ink950`    | `#0B0B14`                |
 | `navy900`   | `#18172B`                |
 | `navy850`   | `#1A192F`                |
+| `navy950`   | `#071732`                |
+| `gold400`   | `#DBB618`                |
 | `slate800`  | `#212E43`                |
 | `teal900`   | `#112A2B`                |
 | `cyan400`   | `#64EDF7`                |
@@ -40,6 +42,7 @@ Two layers. **Core tokens** (`src/theme/palette.ts`) hold raw values and are pri
 | `backgroundColors` | `screen`                                                 | `black`      | Screen background                                        |
 |                    | `surface`                                                | `navy900`    | Cards, option rows, list groups, segmented control track |
 |                    | `surfaceRaised`                                          | `navy850`    | Sheet card, sign-in card                                 |
+|                    | `surfaceLock`                                            | `navy950`    | "Unlock Episode N" card on a locked slide                |
 |                    | `surfaceSelected`                                        | `slate800`   | Selected unlock option                                   |
 |                    | `surfaceSelectedBrand`                                   | `teal900`    | Selected coin pack                                       |
 |                    | `brand`                                                  | `cyan400`    | Primary CTAs, active chip                                |
@@ -113,7 +116,7 @@ Browse them all in the dev-only kitchen sink (`/dev/kitchen-sink`, linked from t
 | `Screen`                                     | `edges`                                                                                                                                                                 | Background; no safe-area padding by default (Header pads the top, lists use `useListBottomPadding`). Scrolling is the screen's list                                                                                                                                                |
 | `Header`                                     | `variant: main \| secondary`, `left`, `right`, `title`, `scrollY`                                                                                                       | Same content height everywhere (56pt + top safe area). `main`: solid, takes its own space, title centered. `secondary`: floats over the content, title after `left`, transparent until scrolled, then fades to solid over one header height (`useHeaderScroll` provides `scrollY`) |
 | `HeaderTitle`                                | `children`                                                                                                                                                              | The one header title style (`h2`, one line)                                                                                                                                                                                                                                        |
-| `HeaderBackButton`                           |                                                                                                                                                                         | Standard `left` slot for `secondary`                                                                                                                                                                                                                                               |
+| `HeaderBackButton`                           |                                                                                                                                                                         | Standard `left` slot for `secondary`, a filled circle so it stays readable over video                                                                                                                                                                                              |
 | `LoadingState` / `ErrorState` / `EmptyState` | `message` / `error`, `onRetry` / `message`, `icon`                                                                                                                      | ErrorState: "not found" (no retry) vs "couldn't load" (retry) from `RepositoryError.kind`                                                                                                                                                                                          |
 
 Layout hooks: `useHeaderHeight` (top padding for content under a floating header), `useHeaderScroll` (`{ scrollY, onScroll }`), `useListBottomPadding({ hasTabBar })` (end padding of every scrolling list).

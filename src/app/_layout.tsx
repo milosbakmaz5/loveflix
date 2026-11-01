@@ -69,7 +69,12 @@ export default function RootLayout() {
                   headerShown: false,
                   contentStyle: { backgroundColor: backgroundColors.screen },
                 }}
-              />
+              >
+                <Stack.Screen
+                  name="unlock/[episodeId]"
+                  options={{ presentation: 'formSheet', sheetAllowedDetents: 'fitToContents' }}
+                />
+              </Stack>
             </ThemeProvider>
           </QueryClientProvider>
         </RepositoryProvider>

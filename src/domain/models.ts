@@ -65,6 +65,8 @@ export type Episode = {
   thumbnail: ImageRef;
   videoUri: string;
   access: EpisodeAccess;
+  likeCount: number;
+  commentCount: number;
 };
 
 export type CoinPackBadge = 'popular' | 'bestValue';

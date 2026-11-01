@@ -11,7 +11,7 @@ export const DEMO_CONFIG = {
   /** "Unlock full season" discount (0.4 = 40% off). */
   seasonDiscountRate: 0.4,
   /** Each episode stops after this many seconds so the cliffhanger arrives quickly. */
-  playbackCapSec: 15,
+  playbackCapSec: 60,
   /** Simulated network latency of the mock repository. */
   mockLatencyMs: 300,
 } as const;

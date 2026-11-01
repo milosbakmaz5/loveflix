@@ -66,5 +66,23 @@
   },
   "profile": {
     "resetDemo": "Reset demo"
+  },
+  "player": {
+    "watch": "Watch",
+    "episodeNumber": "Ep {{number}}",
+    "unlockEpisode": "Unlock Episode {{number}}",
+    "like": "Like",
+    "unlike": "Remove like",
+    "likes": "{{count}} likes",
+    "comments_one": "{{count}} comment",
+    "comments_other": "{{count}} comments",
+    "share": "Share",
+    "play": "Play",
+    "pause": "Pause",
+    "progress": "Playback position",
+    "rewind": "Back {{seconds}} seconds",
+    "forward": "Forward {{seconds}} seconds",
+    "rewindShort": "-{{seconds}}s",
+    "forwardShort": "+{{seconds}}s"
   }
 }

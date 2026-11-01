@@ -15,10 +15,14 @@ export const backgroundColors = {
   screen: palette.black,
   surface: palette.navy900,
   surfaceRaised: palette.navy850,
+  /** "Unlock Episode N" card on a locked slide. */
+  surfaceLock: palette.navy950,
   surfaceSelected: palette.slate800,
   surfaceSelectedBrand: palette.teal900,
   /** Low-contrast fill for small tags ("Ep 5", counts) on images and surfaces. */
   subtle: palette.white10,
+  /** Unfilled part of the video progress bar. */
+  track: palette.white40,
   brand: palette.cyan400,
   accent: palette.violet400,
   /** Soft violet fill (Spotlight badge). */
@@ -43,6 +47,7 @@ export const iconColors = {
   brand: palette.cyan400,
   accent: palette.violet400,
   onBrand: palette.ink950,
+  coin: palette.gold400,
 } as const;
 
 export const shadowColors = {
