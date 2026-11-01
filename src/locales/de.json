@@ -100,10 +100,8 @@
       "month": "{{price}}/Mon.",
       "week": "{{price}}/Wo."
     },
-    "adOption": "Werbung ansehen",
-    "adOptionDetail": "Schalte diese Folge kostenlos frei",
-    "adOptionPrice": "Kostenlos",
     "confirm": "Jetzt freischalten",
+    "watchAd": "Werbung ansehen und kostenlos freischalten",
     "dismiss": "Vielleicht später"
   },
   "store": {
@@ -133,5 +131,12 @@
     },
     "paymentFailed": "Die Zahlung ist fehlgeschlagen. Dir wurde nichts berechnet, bitte versuche es erneut.",
     "legal": "Mit dem Kauf stimmst du unseren Nutzungsbedingungen zu. Abos verlängern sich automatisch, sofern sie nicht gekündigt werden."
+  },
+  "ad": {
+    "title": "Werbung",
+    "headline": "Hier könnte deine Werbung stehen",
+    "body": "Dies ist eine Beispielwerbung für die Demo. Bleib bis zum Ende des Countdowns, um die Folge kostenlos freizuschalten.",
+    "unlocksIn_one": "Freischaltung in {{count}} Sekunde",
+    "unlocksIn_other": "Freischaltung in {{count}} Sekunden"
   }
 }

@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     gap: spacing.lg,
   },
   thumbnail: {
-    width: 110,
-    height: 143,
+    width: 100,
+    height: 130,
     borderRadius: radii.sm,
     overflow: 'hidden',
   },

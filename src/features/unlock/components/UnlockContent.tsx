@@ -25,13 +25,13 @@ export function UnlockContent({ episode, seasonEpisodes, plans }: UnlockContentP
         selectedType={flow.selectedType}
         onSelect={flow.select}
       />
-      <UnlockFooter onConfirm={flow.confirm} onDismiss={flow.dismiss} />
+      <UnlockFooter onConfirm={flow.confirm} onWatchAd={flow.watchAd} onDismiss={flow.dismiss} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   content: {
-    gap: spacing.xxl,
+    gap: spacing.xl,
   },
 });

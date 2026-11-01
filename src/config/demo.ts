@@ -12,6 +12,8 @@ export const DEMO_CONFIG = {
   seasonDiscountRate: 0.4,
   /** Each episode stops after this many seconds so the cliffhanger arrives quickly. */
   playbackCapSec: 60,
+  /** How long the mock rewarded ad runs before it unlocks the episode. */
+  adDurationSec: 5,
   /** Simulated network latency of the mock repository. */
   mockLatencyMs: 300,
 } as const;

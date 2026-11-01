@@ -1,6 +1,9 @@
 import type { UnlockOption } from '@/domain';
 
-function isShownInSheet(option: UnlockOption): boolean {
+/** The ad is a link below the rows, because a fourth row wouldn't fit on the card. */
+export type SheetOption = Exclude<UnlockOption, { type: 'ad' }>;
+
+function isShownInSheet(option: UnlockOption): option is SheetOption {
   switch (option.type) {
     case 'episode':
       return true;
@@ -20,6 +23,6 @@ function isShownInSheet(option: UnlockOption): boolean {
 }
 
 /** The rows of the unlock sheet, in display order. */
-export function getSheetOptions(options: readonly UnlockOption[]): UnlockOption[] {
+export function getSheetOptions(options: readonly UnlockOption[]): SheetOption[] {
   return options.filter(isShownInSheet);
 }

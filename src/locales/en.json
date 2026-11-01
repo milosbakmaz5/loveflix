@@ -100,10 +100,8 @@
       "month": "{{price}}/mo",
       "week": "{{price}}/wk"
     },
-    "adOption": "Watch an Ad",
-    "adOptionDetail": "Unlock this episode for free",
-    "adOptionPrice": "Free",
     "confirm": "Unlock Now",
+    "watchAd": "Watch an ad to unlock for free",
     "dismiss": "Maybe Later"
   },
   "store": {
@@ -133,5 +131,12 @@
     },
     "paymentFailed": "The payment didn't go through. You weren't charged, so please try again.",
     "legal": "By purchasing, you agree to our Terms of Service. Subscriptions auto-renew unless canceled."
+  },
+  "ad": {
+    "title": "Ad",
+    "headline": "Your ad could be here",
+    "body": "This is a sample ad for the demo. Stay until the countdown ends to unlock the episode for free.",
+    "unlocksIn_one": "Unlocks in {{count}} second",
+    "unlocksIn_other": "Unlocks in {{count}} seconds"
   }
 }

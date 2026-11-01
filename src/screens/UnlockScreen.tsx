@@ -43,6 +43,6 @@ export function UnlockScreen({ episodeId, seriesId }: UnlockScreenProps) {
 const styles = StyleSheet.create({
   // About the height of the loaded content, so the card doesn't jump when it arrives.
   state: {
-    height: 686,
+    height: 709,
   },
 });

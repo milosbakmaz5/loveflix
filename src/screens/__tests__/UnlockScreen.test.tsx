@@ -139,6 +139,18 @@ describe('UnlockScreen', () => {
     expect(router.back).toHaveBeenCalledTimes(1);
   });
 
+  it('opens the ad from the link, without unlocking yet', async () => {
+    const { store, episodeId } = await renderUnlock();
+
+    await fireEvent.press(await screen.findByRole('button', { name: /Watch an ad/ }));
+
+    expect(router.push).toHaveBeenCalledWith({
+      pathname: '/ad/[episodeId]',
+      params: { episodeId },
+    });
+    expect(store.get(unlockedEpisodeIdsAtom).size).toBe(0);
+  });
+
   it('closes without unlocking on Maybe Later and on the backdrop', async () => {
     const { store } = await renderUnlock({ coins: 1000 });
 

@@ -1,10 +1,10 @@
 import { useAtomValue } from 'jotai';
 
 import { DEMO_CONFIG } from '@/config/demo';
-import { buildUnlockOptions, type Episode, type MembershipPlan, type UnlockOption } from '@/domain';
+import { buildUnlockOptions, type Episode, type MembershipPlan } from '@/domain';
 import { entitlementsAtom } from '@/state';
 
-import { getSheetOptions } from '../utils/getSheetOptions';
+import { getSheetOptions, type SheetOption } from '../utils/getSheetOptions';
 
 type UnlockOptionsInput = {
   episode: Episode;
@@ -17,7 +17,7 @@ export function useUnlockOptions({
   episode,
   seasonEpisodes,
   plans,
-}: UnlockOptionsInput): UnlockOption[] {
+}: UnlockOptionsInput): SheetOption[] {
   const entitlements = useAtomValue(entitlementsAtom);
   return getSheetOptions(
     buildUnlockOptions({

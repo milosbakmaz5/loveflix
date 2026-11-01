@@ -1,4 +1,4 @@
-import { Lock } from 'lucide-react-native';
+import { Lock, Play } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
@@ -7,10 +7,11 @@ import { spacing } from '@/theme';
 
 type UnlockFooterProps = {
   onConfirm: () => void;
+  onWatchAd: () => void;
   onDismiss: () => void;
 };
 
-export function UnlockFooter({ onConfirm, onDismiss }: UnlockFooterProps) {
+export function UnlockFooter({ onConfirm, onWatchAd, onDismiss }: UnlockFooterProps) {
   const { t } = useTranslation();
 
   return (
@@ -22,6 +23,14 @@ export function UnlockFooter({ onConfirm, onDismiss }: UnlockFooterProps) {
         fullWidth
         haptic
         onPress={onConfirm}
+      />
+      <Button
+        label={t('unlock.watchAd')}
+        icon={Play}
+        variant="ghost"
+        size="md"
+        fullWidth
+        onPress={onWatchAd}
       />
       <Button label={t('unlock.dismiss')} variant="ghost" size="md" fullWidth onPress={onDismiss} />
     </View>

@@ -2,12 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
 import { Card, RadioIndicator, Text } from '@/components/ui';
-import type { UnlockOption } from '@/domain';
 import { formatPrice } from '@/lib/format';
 import { backgroundColors, radii, spacing } from '@/theme';
 
+import type { SheetOption } from '../utils/getSheetOptions';
+
 type UnlockOptionRowProps = {
-  option: UnlockOption;
+  option: SheetOption;
   isSelected: boolean;
   onSelect: () => void;
 };
@@ -18,7 +19,7 @@ type RowCopy = {
   price: string;
 };
 
-function useRowCopy(option: UnlockOption): RowCopy {
+function useRowCopy(option: SheetOption): RowCopy {
   const { t, i18n } = useTranslation();
   switch (option.type) {
     case 'episode':
@@ -43,12 +44,6 @@ function useRowCopy(option: UnlockOption): RowCopy {
         price: t(`unlock.pricePer.${option.plan.period}`, {
           price: formatPrice(option.plan.price, i18n.language),
         }),
-      };
-    case 'ad':
-      return {
-        title: t('unlock.adOption'),
-        subtitle: t('unlock.adOptionDetail'),
-        price: t('unlock.adOptionPrice'),
       };
     default: {
       const _exhaustive: never = option;

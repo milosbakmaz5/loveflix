@@ -3,12 +3,13 @@ import { router } from 'expo-router';
 import { useSetAtom } from 'jotai';
 import { useState } from 'react';
 
-import type { Episode, MembershipPlan, UnlockOption, UnlockOptionType } from '@/domain';
+import type { Episode, MembershipPlan } from '@/domain';
 import { activateMembershipAtom, unlockWithCoinsAtom } from '@/state';
 
+import type { SheetOption } from '../utils/getSheetOptions';
 import { useUnlockOptions } from './useUnlockOptions';
 
-const DEFAULT_OPTION: UnlockOptionType = 'season';
+const DEFAULT_OPTION: SheetOption['type'] = 'season';
 
 type UnlockFlowOptions = {
   episode: Episode;
@@ -17,11 +18,12 @@ type UnlockFlowOptions = {
 };
 
 type UnlockFlow = {
-  options: UnlockOption[];
-  selectedType: UnlockOptionType | undefined;
-  select: (type: UnlockOptionType) => void;
+  options: SheetOption[];
+  selectedType: SheetOption['type'] | undefined;
+  select: (type: SheetOption['type']) => void;
   /** Unlocks with the selected option, or opens the store when coins are short. */
   confirm: () => void;
+  watchAd: () => void;
   dismiss: () => void;
 };
 
@@ -38,7 +40,7 @@ export function useUnlockFlow({ episode, seasonEpisodes, plans }: UnlockFlowOpti
     router.back();
   }
 
-  function unlockWith(option: UnlockOption) {
+  function unlockWith(option: SheetOption) {
     switch (option.type) {
       case 'episode':
       case 'season': {
@@ -59,8 +61,6 @@ export function useUnlockFlow({ episode, seasonEpisodes, plans }: UnlockFlowOpti
         activateMembership(option.plan.id);
         finish();
         return;
-      case 'ad':
-        return;
       default: {
         const _exhaustive: never = option;
         return _exhaustive;
@@ -77,6 +77,7 @@ export function useUnlockFlow({ episode, seasonEpisodes, plans }: UnlockFlowOpti
         unlockWith(selected);
       }
     },
+    watchAd: () => router.push({ pathname: '/ad/[episodeId]', params: { episodeId: episode.id } }),
     dismiss: () => router.back(),
   };
 }

@@ -80,6 +80,7 @@ export default function RootLayout() {
                 />
                 {/* Opens over the unlock card, where a plain push would become a page sheet. */}
                 <Stack.Screen name="store" options={{ presentation: 'fullScreenModal' }} />
+                <Stack.Screen name="ad/[episodeId]" options={{ presentation: 'fullScreenModal' }} />
               </Stack>
             </ThemeProvider>
           </QueryClientProvider>
