@@ -1,6 +1,6 @@
 import { Redirect } from 'expo-router';
 
-import { KitchenSinkScreen } from '@/features/dev/KitchenSinkScreen';
+import { KitchenSinkScreen } from '@/screens/KitchenSinkScreen';
 
 // Dev-only: release builds never show the UI kit catalogue.
 export default function KitchenSinkRoute() {

@@ -33,6 +33,10 @@ export const layout = {
   screenGutter: spacing.md,
   sectionGap: spacing.xxl,
   minHitTarget: 44,
+  /** Content row of every Header, without the top safe area. */
+  headerHeight: 56,
+  /** Content row of the tab bar, without the bottom safe area. */
+  tabBarHeight: 56,
 } as const;
 
 export const elevation = {

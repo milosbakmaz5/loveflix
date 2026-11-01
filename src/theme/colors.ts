@@ -21,7 +21,13 @@ export const backgroundColors = {
   subtle: palette.white10,
   brand: palette.cyan400,
   accent: palette.violet400,
+  /** Soft violet fill (Spotlight badge). */
+  accentSubtle: palette.violet25,
   overlay: palette.black60,
+  /** Even dimming over artwork that carries text (hero). */
+  imageDim: palette.black35,
+  /** Light block on dark ("Popular Micro Dramas" heading square). */
+  inverse: palette.white,
   transparent: palette.transparent,
 } as const;
 

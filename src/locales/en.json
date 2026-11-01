@@ -8,7 +8,9 @@
     "error": "Something went wrong.",
     "loading": "Loading…",
     "seeAll": "See all",
-    "notAvailable": "Not available"
+    "notAvailable": "Not available",
+    "back": "Back",
+    "comingSoon": "Coming soon"
   },
   "badges": {
     "pro": "Pro",
@@ -24,7 +26,10 @@
     "posterLabel_one": "{{title}}, {{count}} episode",
     "posterLabel_other": "{{title}}, {{count}} episodes",
     "posterLabelPro_one": "{{title}}, {{count}} episode, premium",
-    "posterLabelPro_other": "{{title}}, {{count}} episodes, premium"
+    "posterLabelPro_other": "{{title}}, {{count}} episodes, premium",
+    "episodes_one": "{{count}} Episode",
+    "episodes_other": "{{count}} Episodes",
+    "rating": "Rated {{rating}}"
   },
   "coins": {
     "amount_one": "{{count}} Coin",
@@ -34,5 +39,32 @@
     "error": "Couldn't load this. Check your connection and try again.",
     "notFound": "This title isn't available any more.",
     "empty": "Nothing here yet."
+  },
+  "genres": {
+    "all": "All",
+    "romance": "Romance",
+    "drama": "Drama",
+    "billionaire": "Billionaire",
+    "action": "Action",
+    "mystery": "Mystery",
+    "fantasy": "Fantasy",
+    "historical": "Historical"
+  },
+  "home": {
+    "watchNow": "Watch now",
+    "addToList": "Add to My List",
+    "removeFromList": "Remove from My List",
+    "profile": "Profile",
+    "noSeries": "No series in this genre yet."
+  },
+  "tabs": {
+    "home": "Home",
+    "discover": "Discover",
+    "romance": "Romance",
+    "library": "Library",
+    "profile": "Profile"
+  },
+  "profile": {
+    "resetDemo": "Reset demo"
   }
 }

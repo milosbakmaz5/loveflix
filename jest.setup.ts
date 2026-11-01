@@ -7,4 +7,10 @@ jest.mock('react-native-mmkv', () => {
   return { createMMKV: createMockMMKV };
 });
 
+jest.mock(
+  'react-native-safe-area-context',
+  () => jest.requireActual('react-native-safe-area-context/jest/mock').default,
+);
+
+import '@shopify/flash-list/jestSetup';
 import '@/lib/i18n';

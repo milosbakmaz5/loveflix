@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: layout.screenGutter,
   },
   separator: {
-    width: spacing.sm,
+    width: spacing.md,
   },
 });

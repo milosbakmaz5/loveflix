@@ -1,10 +1,12 @@
 // Dev-only catalogue of the UI kit. Labels are plain English on purpose: this screen
 // never ships (the route redirects outside __DEV__), so it stays out of the locale files.
 import { useQueryClient } from '@tanstack/react-query';
+import { Image } from 'expo-image';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { Bell, Heart, Lock, Play, Plus, Search, Star } from 'lucide-react-native';
 import { type ReactNode, useState } from 'react';
-import { ScrollView, StyleSheet, Switch, View } from 'react-native';
+import { StyleSheet, Switch, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import {
   Avatar,
@@ -16,6 +18,8 @@ import {
   EmptyState,
   ErrorState,
   GradientText,
+  Header,
+  HeaderBackButton,
   getPosterCardHeight,
   Icon,
   IconButton,
@@ -28,6 +32,9 @@ import {
   SectionHeader,
   Tag,
   Text,
+  useHeaderHeight,
+  useHeaderScroll,
+  useListBottomPadding,
 } from '@/components/ui';
 import { devSettings, RepositoryError, useCurrentUser, useHomeFeed } from '@/data';
 import type { Series } from '@/domain';
@@ -55,6 +62,7 @@ const PACKS = [
 ] as const;
 const NOT_FOUND = new RepositoryError('notFound', 'demo');
 const NETWORK = new RepositoryError('network', 'demo');
+const DEMO_HERO_HEIGHT = 160;
 const noop = () => {};
 
 function renderPoster({ item }: { item: Series }) {
@@ -85,6 +93,10 @@ export function KitchenSinkScreen() {
   const balance = useAtomValue(coinBalanceAtom);
   const creditCoins = useSetAtom(creditCoinsAtom);
   const resetDemo = useSetAtom(resetDemoAtom);
+  const { scrollY, onScroll } = useHeaderScroll();
+  const headerHeight = useHeaderHeight();
+  const bottomPadding = useListBottomPadding({ hasTabBar: false });
+  const demoImage = homeFeed.data?.series[0]?.heroImage;
 
   function toggleErrors(value: boolean) {
     devSettings.setSimulateNetworkErrors(value);
@@ -93,10 +105,18 @@ export function KitchenSinkScreen() {
   }
 
   return (
-    <Screen edges={['top', 'bottom']}>
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.gutter}>
-          <Text variant="display">UI kit</Text>
+    <Screen>
+      <Header variant="secondary" left={<HeaderBackButton />} title="UI kit" scrollY={scrollY} />
+      <Animated.ScrollView
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+        contentContainerStyle={[styles.content, { paddingBottom: bottomPadding }]}
+      >
+        {/* Runs under the floating header, which turns solid as this scrolls away. */}
+        <View style={[styles.demoHero, { height: headerHeight + DEMO_HERO_HEIGHT }]}>
+          {demoImage !== undefined && (
+            <Image source={demoImage} style={StyleSheet.absoluteFill} contentFit="cover" />
+          )}
         </View>
 
         <Section title="Dev tools">
@@ -304,7 +324,7 @@ export function KitchenSinkScreen() {
             <EmptyState />
           </View>
         </Section>
-      </ScrollView>
+      </Animated.ScrollView>
     </Screen>
   );
 }
@@ -312,10 +332,9 @@ export function KitchenSinkScreen() {
 const styles = StyleSheet.create({
   content: {
     gap: layout.sectionGap,
-    paddingVertical: spacing.xl,
   },
-  gutter: {
-    paddingHorizontal: layout.screenGutter,
+  demoHero: {
+    backgroundColor: backgroundColors.surface,
   },
   section: {
     gap: spacing.sm,

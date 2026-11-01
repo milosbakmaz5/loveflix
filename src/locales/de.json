@@ -8,7 +8,9 @@
     "error": "Etwas ist schiefgelaufen.",
     "loading": "Wird geladen…",
     "seeAll": "Alle ansehen",
-    "notAvailable": "Nicht verfügbar"
+    "notAvailable": "Nicht verfügbar",
+    "back": "Zurück",
+    "comingSoon": "Demnächst verfügbar"
   },
   "badges": {
     "pro": "Pro",
@@ -24,7 +26,10 @@
     "posterLabel_one": "{{title}}, {{count}} Folge",
     "posterLabel_other": "{{title}}, {{count}} Folgen",
     "posterLabelPro_one": "{{title}}, {{count}} Folge, Premium",
-    "posterLabelPro_other": "{{title}}, {{count}} Folgen, Premium"
+    "posterLabelPro_other": "{{title}}, {{count}} Folgen, Premium",
+    "episodes_one": "{{count}} Episode",
+    "episodes_other": "{{count}} Episoden",
+    "rating": "Bewertung {{rating}}"
   },
   "coins": {
     "amount_one": "{{count}} Münze",
@@ -34,5 +39,32 @@
     "error": "Laden fehlgeschlagen. Prüfe deine Verbindung und versuche es erneut.",
     "notFound": "Dieser Titel ist nicht mehr verfügbar.",
     "empty": "Hier ist noch nichts."
+  },
+  "genres": {
+    "all": "Alle",
+    "romance": "Romanze",
+    "drama": "Drama",
+    "billionaire": "Milliardär",
+    "action": "Action",
+    "mystery": "Mystery",
+    "fantasy": "Fantasy",
+    "historical": "Historisch"
+  },
+  "home": {
+    "watchNow": "Jetzt ansehen",
+    "addToList": "Zu Meiner Liste hinzufügen",
+    "removeFromList": "Aus Meiner Liste entfernen",
+    "profile": "Profil",
+    "noSeries": "In diesem Genre gibt es noch keine Serien."
+  },
+  "tabs": {
+    "home": "Home",
+    "discover": "Entdecken",
+    "romance": "Romanze",
+    "library": "Bibliothek",
+    "profile": "Profil"
+  },
+  "profile": {
+    "resetDemo": "Demo zurücksetzen"
   }
 }
