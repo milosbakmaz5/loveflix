@@ -1,14 +1,10 @@
 {
   "app": {
-    "name": "LoveFlix",
-    "tagline": "Tauche ein in Premium-Kurzromanzen."
+    "name": "LoveFlix"
   },
   "common": {
     "retry": "Erneut versuchen",
-    "error": "Etwas ist schiefgelaufen.",
     "loading": "Wird geladen…",
-    "seeAll": "Alle ansehen",
-    "notAvailable": "Nicht verfügbar",
     "back": "Zurück",
     "comingSoon": "Demnächst verfügbar",
     "close": "Schließen"

@@ -1,7 +1,7 @@
 import type { TextStyle } from 'react-native';
 
 // Keys match the names registered with expo-font in src/app/_layout.tsx.
-export const fontFamilies = {
+const fontFamilies = {
   serifSemiBold: 'PlayfairDisplay_600SemiBold',
   serifBold: 'PlayfairDisplay_700Bold',
   sansRegular: 'Inter_400Regular',

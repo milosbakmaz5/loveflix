@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Crown, Lock, type LucideIcon } from 'lucide-react-native';
+import { Crown, type LucideIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View, type ViewStyle } from 'react-native';
 
@@ -17,7 +17,7 @@ import {
 import { Icon } from './Icon';
 import { Text } from './Text';
 
-export type BadgeVariant = 'pro' | 'spotlight' | 'popular' | 'bestValue' | 'locked';
+type BadgeVariant = 'pro' | 'spotlight';
 
 type BadgeSpec = {
   labelKey: `badges.${BadgeVariant}`;
@@ -29,13 +29,6 @@ type BadgeSpec = {
 const SPECS: Record<BadgeVariant, BadgeSpec> = {
   pro: { labelKey: 'badges.pro', text: 'onBrand', icon: { component: Crown, color: 'onBrand' } },
   spotlight: { labelKey: 'badges.spotlight', text: 'accent', textVariant: 'caption' },
-  popular: { labelKey: 'badges.popular', text: 'onBrand' },
-  bestValue: { labelKey: 'badges.bestValue', text: 'onBrand' },
-  locked: {
-    labelKey: 'badges.locked',
-    text: 'primary',
-    icon: { component: Lock, color: 'primary' },
-  },
 };
 
 type BadgeProps = {
@@ -54,7 +47,7 @@ export function Badge({ variant }: BadgeProps) {
     </>
   );
 
-  if (variant === 'pro' || variant === 'bestValue') {
+  if (variant === 'pro') {
     return (
       <LinearGradient
         colors={gradients.premium}
@@ -77,9 +70,6 @@ const variantStyles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth * 2,
     borderColor: borderColors.default,
   },
-  popular: { backgroundColor: backgroundColors.brand },
-  bestValue: {},
-  locked: { backgroundColor: backgroundColors.overlay },
 } satisfies Record<BadgeVariant, ViewStyle>);
 
 const styles = StyleSheet.create({

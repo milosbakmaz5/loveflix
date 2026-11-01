@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import type { ComponentType, ReactElement } from 'react';
 import { StyleSheet, type ViewProps } from 'react-native';
 
-import { type GradientName, gradients, type TypographyVariant } from '@/theme';
+import { gradients, type TypographyVariant } from '@/theme';
 
 import { Text } from './Text';
 
@@ -16,7 +16,6 @@ const MaskedView = NativeMaskedView as unknown as ComponentType<
 type GradientTextProps = {
   children: string;
   variant?: TypographyVariant;
-  gradient?: GradientName;
   accessibilityRole?: 'header' | 'text';
 };
 
@@ -24,7 +23,6 @@ type GradientTextProps = {
 export function GradientText({
   children,
   variant = 'h1',
-  gradient = 'premium',
   accessibilityRole = 'text',
 }: GradientTextProps) {
   return (
@@ -35,7 +33,7 @@ export function GradientText({
       style={styles.fitToText}
       maskElement={<Text variant={variant}>{children}</Text>}
     >
-      <LinearGradient colors={gradients[gradient]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
+      <LinearGradient colors={gradients.premium} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
         {/* Invisible copy that gives the gradient the exact size of the text. */}
         <Text variant={variant} style={styles.sizer}>
           {children}

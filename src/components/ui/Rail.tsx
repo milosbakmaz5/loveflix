@@ -9,19 +9,12 @@ type RailProps<T> = {
   keyExtractor: (item: T) => string;
   /** Fixed row height: a horizontal list inside a vertical list must not size itself. */
   height: number;
-  accessibilityLabel?: string;
 };
 
 /** Horizontal FlashList with gutter padding. Define `renderItem` outside render so cells recycle. */
-export function Rail<T>({
-  data,
-  renderItem,
-  keyExtractor,
-  height,
-  accessibilityLabel,
-}: RailProps<T>) {
+export function Rail<T>({ data, renderItem, keyExtractor, height }: RailProps<T>) {
   return (
-    <View style={{ height }} accessibilityLabel={accessibilityLabel}>
+    <View style={{ height }}>
       <FlashList
         horizontal
         data={data}

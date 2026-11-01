@@ -6,7 +6,7 @@ import { backgroundColors, borderColors, type IconColor, layout } from '@/theme'
 import { Icon } from './Icon';
 import { PressableScale } from './PressableScale';
 
-type IconButtonVariant = 'filled' | 'outline' | 'ghost';
+type IconButtonVariant = 'filled' | 'outline';
 type IconButtonSize = 'md' | 'lg';
 
 type IconButtonProps = {
@@ -18,7 +18,6 @@ type IconButtonProps = {
   size?: IconButtonSize;
   color?: IconColor;
   selected?: boolean;
-  disabled?: boolean;
 };
 
 const DIAMETER: Record<IconButtonSize, number> = { md: 40, lg: 48 };
@@ -31,7 +30,6 @@ export function IconButton({
   size = 'md',
   color = 'primary',
   selected,
-  disabled = false,
 }: IconButtonProps) {
   const diameter = DIAMETER[size];
   // Keep the touch area at least 44pt even when the circle is smaller.
@@ -40,7 +38,6 @@ export function IconButton({
   return (
     <PressableScale
       onPress={onPress}
-      disabled={disabled}
       hitSlop={slop}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
@@ -51,8 +48,6 @@ export function IconButton({
           styles.circle,
           variantStyles[variant],
           { width: diameter, height: diameter, borderRadius: diameter / 2 },
-          // Dimming lives on the inner view: PressableScale animates the outer opacity.
-          disabled && styles.disabled,
         ]}
       >
         <Icon icon={icon} size={size === 'lg' ? 'lg' : 'md'} color={color} />
@@ -68,7 +63,6 @@ const variantStyles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth * 2,
     borderColor: borderColors.default,
   },
-  ghost: { backgroundColor: backgroundColors.transparent },
 } satisfies Record<IconButtonVariant, ViewStyle>);
 
 const styles = StyleSheet.create({
@@ -76,5 +70,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  disabled: { opacity: 0.5 },
 });

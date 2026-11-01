@@ -132,8 +132,8 @@ export function KitchenSinkScreen() {
           <View style={styles.rowBetween}>
             <CoinAmount amount={balance} />
             <View style={styles.row}>
-              <Button label="+300" size="sm" variant="secondary" onPress={() => creditCoins(300)} />
-              <Button label="Reset demo" size="sm" variant="secondary" onPress={resetDemo} />
+              <Button label="+300" size="md" variant="secondary" onPress={() => creditCoins(300)} />
+              <Button label="Reset demo" size="md" variant="secondary" onPress={resetDemo} />
             </View>
           </View>
         </Section>
@@ -154,7 +154,6 @@ export function KitchenSinkScreen() {
           <Button label="Unlock Now" icon={Lock} shape="rounded" onPress={noop} fullWidth />
           <View style={styles.row}>
             <Button label="Loading" loading onPress={noop} size="md" />
-            <Button label="Watch" icon={Play} disabled onPress={noop} size="md" />
           </View>
           <Button
             label="Buy 800 Coins"
@@ -170,13 +169,8 @@ export function KitchenSinkScreen() {
         <Section title="Icon buttons">
           <View style={styles.row}>
             <IconButton icon={Plus} accessibilityLabel="Add to list" onPress={noop} />
-            <IconButton icon={Search} variant="ghost" accessibilityLabel="Search" onPress={noop} />
-            <IconButton
-              icon={Bell}
-              variant="ghost"
-              accessibilityLabel="Notifications"
-              onPress={noop}
-            />
+            <IconButton icon={Search} accessibilityLabel="Search" onPress={noop} />
+            <IconButton icon={Bell} accessibilityLabel="Notifications" onPress={noop} />
             <IconButton
               icon={Heart}
               variant="filled"
@@ -213,9 +207,6 @@ export function KitchenSinkScreen() {
           <View style={styles.row}>
             <Badge variant="pro" />
             <Badge variant="spotlight" />
-            <Badge variant="popular" />
-            <Badge variant="bestValue" />
-            <Badge variant="locked" />
           </View>
           <MetaRow
             items={[
@@ -271,9 +262,6 @@ export function KitchenSinkScreen() {
               );
             })}
           </View>
-          <Card variant="raised">
-            <Text>Raised</Text>
-          </Card>
         </Section>
 
         <Section title="Avatars">
@@ -312,7 +300,7 @@ export function KitchenSinkScreen() {
 
         <Section title="States">
           <View style={styles.stateBox}>
-            <LoadingState message="Loading episodes…" />
+            <LoadingState />
           </View>
           <View style={styles.stateBox}>
             <ErrorState error={NETWORK} onRetry={noop} />
@@ -331,7 +319,7 @@ export function KitchenSinkScreen() {
 
 const styles = StyleSheet.create({
   content: {
-    gap: layout.sectionGap,
+    gap: spacing.xxl,
   },
   demoHero: {
     backgroundColor: backgroundColors.surface,

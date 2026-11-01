@@ -62,7 +62,4 @@ export const gradients = {
 } as const;
 
 export type TextColor = keyof typeof textColors;
-export type BackgroundColor = keyof typeof backgroundColors;
-export type BorderColor = keyof typeof borderColors;
 export type IconColor = keyof typeof iconColors;
-export type GradientName = keyof typeof gradients;

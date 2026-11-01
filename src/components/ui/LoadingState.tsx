@@ -4,25 +4,12 @@ import { ActivityIndicator } from 'react-native';
 import { iconColors } from '@/theme';
 
 import { StateView } from './StateView';
-import { Text } from './Text';
 
-type LoadingStateProps = {
-  message?: string;
-};
-
-export function LoadingState({ message }: LoadingStateProps) {
+export function LoadingState() {
   const { t } = useTranslation();
   return (
     <StateView>
-      <ActivityIndicator
-        color={iconColors.brand}
-        accessibilityLabel={message ?? t('common.loading')}
-      />
-      {message && (
-        <Text variant="bodySmall" color="secondary" align="center">
-          {message}
-        </Text>
-      )}
+      <ActivityIndicator color={iconColors.brand} accessibilityLabel={t('common.loading')} />
     </StateView>
   );
 }

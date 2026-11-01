@@ -32,7 +32,6 @@ export type IconSize = keyof typeof iconSizes;
 
 export const layout = {
   screenGutter: spacing.md,
-  sectionGap: spacing.xxl,
   minHitTarget: 44,
   /** Content row of every Header, without the top safe area. */
   headerHeight: 56,

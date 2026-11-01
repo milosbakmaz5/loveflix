@@ -12,18 +12,18 @@ export const resources = {
   de: { translation: de },
 } as const;
 
-export type SupportedLanguage = keyof typeof resources;
+type SupportedLanguage = keyof typeof resources;
 
 function isSupportedLanguage(code: string | null | undefined): code is SupportedLanguage {
   return code != null && code in resources;
 }
 
-export function getDeviceLanguage(): SupportedLanguage {
+function getDeviceLanguage(): SupportedLanguage {
   const code = getLocales()[0]?.languageCode;
   return isSupportedLanguage(code) ? code : 'en';
 }
 
-export const i18n = createInstance();
+const i18n = createInstance();
 
 void i18n.use(initReactI18next).init({
   resources,

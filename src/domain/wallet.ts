@@ -1,6 +1,6 @@
 import type { CoinPack } from './models';
 
-export type SpendResult =
+type SpendResult =
   { ok: true; balance: number } | { ok: false; reason: 'insufficient_coins'; missingCoins: number };
 
 function assertCoinAmount(value: number, name: string): void {
@@ -12,11 +12,6 @@ function assertCoinAmount(value: number, name: string): void {
 /** Coins credited for a pack, including the bonus. */
 export function totalCoins(pack: CoinPack): number {
   return pack.coins + pack.bonusCoins;
-}
-
-export function topUp(balance: number, pack: CoinPack): number {
-  assertCoinAmount(balance, 'balance');
-  return balance + totalCoins(pack);
 }
 
 export function canAfford(balance: number, cost: number): boolean {

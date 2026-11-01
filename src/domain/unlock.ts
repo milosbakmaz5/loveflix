@@ -10,17 +10,12 @@ import type {
 import { spendCoins } from './wallet';
 
 export type CoinUnlockOption = Extract<UnlockOption, { type: 'episode' | 'season' }>;
-export type SeasonUnlockOption = Extract<UnlockOption, { type: 'season' }>;
+type SeasonUnlockOption = Extract<UnlockOption, { type: 'season' }>;
 
 export type UnlockResult =
   | { ok: true; balance: number; unlockedEpisodeIds: ReadonlySet<EpisodeId> }
   | { ok: false; reason: 'insufficient_coins'; missingCoins: number }
   | { ok: false; reason: 'already_unlocked' };
-
-export const NO_ENTITLEMENTS: Entitlements = {
-  unlockedEpisodeIds: new Set(),
-  membership: { status: 'none' },
-};
 
 export function isEpisodeUnlocked(episode: Episode, entitlements: Entitlements): boolean {
   return (
@@ -30,23 +25,10 @@ export function isEpisodeUnlocked(episode: Episode, entitlements: Entitlements):
   );
 }
 
-function sortByNumber(episodes: readonly Episode[]): Episode[] {
-  return [...episodes].sort((a, b) => a.number - b.number);
-}
-
-export function getLockedEpisodes(
-  episodes: readonly Episode[],
-  entitlements: Entitlements,
-): Episode[] {
-  return sortByNumber(episodes).filter((episode) => !isEpisodeUnlocked(episode, entitlements));
-}
-
-/** The episode the player stops at — the first one after the cliffhanger. */
-export function findFirstLockedEpisode(
-  episodes: readonly Episode[],
-  entitlements: Entitlements,
-): Episode | undefined {
-  return getLockedEpisodes(episodes, entitlements)[0];
+function getLockedEpisodes(episodes: readonly Episode[], entitlements: Entitlements): Episode[] {
+  return [...episodes]
+    .sort((a, b) => a.number - b.number)
+    .filter((episode) => !isEpisodeUnlocked(episode, entitlements));
 }
 
 export function getEpisodeCost(episode: Episode): number {
@@ -117,22 +99,6 @@ export function buildUnlockOptions({
     ...plans.map((plan): UnlockOption => ({ type: 'membership', plan })),
     { type: 'ad', episodeId: episode.id },
   ];
-}
-
-/** Coins an option costs, or `null` when it isn't paid with coins. */
-export function getOptionCoinCost(option: UnlockOption): number | null {
-  switch (option.type) {
-    case 'episode':
-    case 'season':
-      return option.cost;
-    case 'membership':
-    case 'ad':
-      return null;
-    default: {
-      const _exhaustive: never = option;
-      return _exhaustive;
-    }
-  }
 }
 
 function getOptionEpisodeIds(option: CoinUnlockOption): readonly EpisodeId[] {

@@ -1,11 +1,6 @@
 import { DEMO_CONFIG } from '@/config/demo';
-import {
-  findFirstLockedEpisode,
-  findPackCovering,
-  getMissingCoins,
-  NO_ENTITLEMENTS,
-  totalCoins,
-} from '@/domain';
+import { findPackCovering, getMissingCoins, isEpisodeUnlocked, totalCoins } from '@/domain';
+import { NO_ENTITLEMENTS } from '@/domain/__tests__/fixtures';
 
 import {
   coinPacks,
@@ -128,9 +123,8 @@ describe('demo flow invariants', () => {
   const episodes = createEpisodes(billionairesSecret);
 
   it('locks the episode right after the free ones', () => {
-    expect(findFirstLockedEpisode(episodes, NO_ENTITLEMENTS)?.number).toBe(
-      DEMO_CONFIG.freeEpisodeCount + 1,
-    );
+    const firstLocked = episodes.find((episode) => !isEpisodeUnlocked(episode, NO_ENTITLEMENTS));
+    expect(firstLocked?.number).toBe(DEMO_CONFIG.freeEpisodeCount + 1);
   });
 
   it('cannot afford the first unlock with the starting balance', () => {

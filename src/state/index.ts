@@ -12,6 +12,6 @@ export {
   unlockWithAdAtom,
   unlockWithCoinsAtom,
 } from './actions.atoms';
-export { entitlementsAtom, membershipAtom, unlockedEpisodeIdsAtom } from './entitlements.atoms';
-export { type EpisodeAccessState, getEpisodeAccess, useEpisodeAccess } from './useEpisodeAccess';
+export { entitlementsAtom, unlockedEpisodeIdsAtom } from './entitlements.atoms';
+export { useEpisodeAccess } from './useEpisodeAccess';
 export { coinBalanceAtom } from './wallet.atoms';

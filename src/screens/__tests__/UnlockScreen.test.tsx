@@ -8,7 +8,7 @@ import { createMockRepositories, RepositoryError } from '@/data';
 import {
   coinBalanceAtom,
   creditCoinsAtom,
-  membershipAtom,
+  entitlementsAtom,
   resetDemoAtom,
   unlockedEpisodeIdsAtom,
 } from '@/state';
@@ -134,7 +134,7 @@ describe('UnlockScreen', () => {
 
     await pressConfirm();
 
-    expect(store.get(membershipAtom).status).toBe('active');
+    expect(store.get(entitlementsAtom).membership.status).toBe('active');
     expect(store.get(coinBalanceAtom)).toBe(balance);
     expect(router.back).toHaveBeenCalledTimes(1);
   });

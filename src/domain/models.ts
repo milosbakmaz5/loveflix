@@ -107,9 +107,7 @@ export type UnlockOption =
   | { type: 'membership'; plan: MembershipPlan }
   | { type: 'ad'; episodeId: EpisodeId };
 
-export type UnlockOptionType = UnlockOption['type'];
-
-export type SeriesRail = {
+type SeriesRail = {
   id: string;
   title: string;
   seriesIds: readonly SeriesId[];

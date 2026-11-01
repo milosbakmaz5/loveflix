@@ -11,10 +11,10 @@ import { Badge } from './Badge';
 import { PressableScale } from './PressableScale';
 import { Text } from './Text';
 
-export type PosterSize = 'md' | 'lg';
+type PosterSize = 'md' | 'lg';
 
 /** Poster widths; height is always 3:2 of the width. Rails use these to size their rows. */
-export const POSTER_WIDTH: Record<PosterSize, number> = { md: 128, lg: 148 };
+const POSTER_WIDTH: Record<PosterSize, number> = { md: 128, lg: 148 };
 const POSTER_RATIO = 1.5;
 /** Two lines of `h3` under the poster. */
 const TITLE_HEIGHT = 44;

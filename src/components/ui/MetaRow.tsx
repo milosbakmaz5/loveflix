@@ -5,7 +5,7 @@ import { spacing, type TextColor } from '@/theme';
 
 import { Text } from './Text';
 
-export type MetaItem = {
+type MetaItem = {
   key: string;
   content: ReactNode;
 };

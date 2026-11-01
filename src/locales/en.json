@@ -1,14 +1,10 @@
 {
   "app": {
-    "name": "LoveFlix",
-    "tagline": "Dive into premium short-form romances."
+    "name": "LoveFlix"
   },
   "common": {
     "retry": "Try again",
-    "error": "Something went wrong.",
     "loading": "Loading…",
-    "seeAll": "See all",
-    "notAvailable": "Not available",
     "back": "Back",
     "comingSoon": "Coming soon",
     "close": "Close"

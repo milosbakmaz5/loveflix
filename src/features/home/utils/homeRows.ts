@@ -14,7 +14,7 @@ export type HomeRow =
 // Fixed row heights: the sections size themselves to these, and the footer filler adds them up.
 export const GENRE_BAR_HEIGHT = 56;
 export const CATEGORY_ROW_HEIGHT = 30 + spacing.lg + spacing.md;
-export const RAIL_TITLE_HEIGHT = 22;
+const RAIL_TITLE_HEIGHT = 22;
 export const RAIL_ROW_HEIGHT =
   RAIL_TITLE_HEIGHT + spacing.sm + getPosterCardHeight('md') + spacing.lg;
 export const EMPTY_ROW_HEIGHT = 240;

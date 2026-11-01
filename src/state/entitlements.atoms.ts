@@ -38,10 +38,8 @@ export const unlockedEpisodeIdsAtom = atom(
   (get): ReadonlySet<EpisodeId> => new Set(get(storedUnlockedEpisodeIdsAtom)),
 );
 
-export const membershipAtom = atom((get) => get(storedMembershipAtom));
-
 /** Everything the user owns, in the shape the domain rules take. */
 export const entitlementsAtom = atom((get): Entitlements => ({
   unlockedEpisodeIds: get(unlockedEpisodeIdsAtom),
-  membership: get(membershipAtom),
+  membership: get(storedMembershipAtom),
 }));

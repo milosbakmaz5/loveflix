@@ -1,21 +1,17 @@
 import { createStore } from 'jotai';
 
 import { DEMO_CONFIG } from '@/config/demo';
-import {
-  buildEpisodeOption,
-  buildSeasonOption,
-  isEpisodeUnlocked,
-  NO_ENTITLEMENTS,
-} from '@/domain';
+import { buildEpisodeOption, buildSeasonOption, isEpisodeUnlocked } from '@/domain';
 import { makeEpisode, season } from '@/domain/__tests__/fixtures';
-import { clearStorage, STORAGE_KEYS, syncStorage } from '@/lib/storage';
+import { NO_ENTITLEMENTS } from '@/domain/__tests__/fixtures';
+import { STORAGE_KEYS, syncStorage } from '@/lib/storage';
+import { clearStorage } from '@/test/clearStorage';
 
 import {
   activateMembershipAtom,
   coinBalanceAtom,
   creditCoinsAtom,
   entitlementsAtom,
-  membershipAtom,
   resetDemoAtom,
   unlockedEpisodeIdsAtom,
   unlockWithAdAtom,
@@ -38,7 +34,7 @@ describe('initial state', () => {
   it('starts with the demo balance, nothing unlocked and no membership', () => {
     expect(store.get(coinBalanceAtom)).toBe(DEMO_CONFIG.startingCoinBalance);
     expect(store.get(unlockedEpisodeIdsAtom).size).toBe(0);
-    expect(store.get(membershipAtom)).toEqual({ status: 'none' });
+    expect(store.get(entitlementsAtom).membership).toEqual({ status: 'none' });
     expect(store.get(entitlementsAtom)).toEqual(NO_ENTITLEMENTS);
   });
 });
@@ -124,7 +120,10 @@ describe('activateMembershipAtom', () => {
   it('unlocks every episode', () => {
     store.set(activateMembershipAtom, 'premium-monthly');
 
-    expect(store.get(membershipAtom)).toEqual({ status: 'active', planId: 'premium-monthly' });
+    expect(store.get(entitlementsAtom).membership).toEqual({
+      status: 'active',
+      planId: 'premium-monthly',
+    });
     expect(season.every((e) => isEpisodeUnlocked(e, store.get(entitlementsAtom)))).toBe(true);
   });
 });
@@ -169,7 +168,10 @@ describe('app restart', () => {
 
     expect(restarted.get(state.coinBalanceAtom)).toBe(295);
     expect([...restarted.get(state.unlockedEpisodeIdsAtom)]).toEqual([episode5.id]);
-    expect(restarted.get(state.membershipAtom)).toEqual({ status: 'active', planId: 'vip-weekly' });
+    expect(restarted.get(state.entitlementsAtom).membership).toEqual({
+      status: 'active',
+      planId: 'vip-weekly',
+    });
   });
 
   it('falls back to the defaults when saved data is damaged', () => {
@@ -181,6 +183,6 @@ describe('app restart', () => {
 
     expect(restarted.get(state.coinBalanceAtom)).toBe(DEMO_CONFIG.startingCoinBalance);
     expect(restarted.get(state.unlockedEpisodeIdsAtom).size).toBe(0);
-    expect(restarted.get(state.membershipAtom)).toEqual({ status: 'none' });
+    expect(restarted.get(state.entitlementsAtom).membership).toEqual({ status: 'none' });
   });
 });

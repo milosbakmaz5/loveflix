@@ -45,16 +45,6 @@ describe('Button', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  it('is disabled and does not fire when disabled', async () => {
-    const onPress = jest.fn();
-    await render(<Button label="Watch" disabled onPress={onPress} />);
-
-    const button = screen.getByRole('button', { name: 'Watch' });
-    expect(button).toBeDisabled();
-    await fireEvent.press(button);
-    expect(onPress).not.toHaveBeenCalled();
-  });
-
   it('reports busy and blocks presses while loading', async () => {
     const onPress = jest.fn();
     await render(<Button label="Buy" loading onPress={onPress} />);
@@ -125,9 +115,6 @@ describe('Badge', () => {
   it.each([
     ['pro', 'Pro'],
     ['spotlight', 'Spotlight'],
-    ['popular', 'Popular'],
-    ['bestValue', 'Best value'],
-    ['locked', 'Locked'],
   ] as const)('%s shows its translated label', async (variant, label) => {
     await render(<Badge variant={variant} />);
     expect(screen.getByText(label)).toBeOnTheScreen();

@@ -2,11 +2,10 @@ import { renderHook } from '@testing-library/react-native';
 import { createStore, Provider } from 'jotai';
 import type { ReactNode } from 'react';
 
-import { DEMO_CONFIG } from '@/config/demo';
 import { makeEpisode } from '@/domain/__tests__/fixtures';
-import { clearStorage } from '@/lib/storage';
+import { clearStorage } from '@/test/clearStorage';
 
-import { activateMembershipAtom, creditCoinsAtom, unlockWithAdAtom, useEpisodeAccess } from '..';
+import { activateMembershipAtom, unlockWithAdAtom, useEpisodeAccess } from '..';
 
 const freeEpisode = makeEpisode(1);
 const paidEpisode = makeEpisode(5);
@@ -29,30 +28,11 @@ async function renderAccess(episode = paidEpisode) {
 
 describe('useEpisodeAccess', () => {
   it('treats a free episode as unlocked', async () => {
-    expect(await renderAccess(freeEpisode)).toEqual({
-      isUnlocked: true,
-      cost: 0,
-      canAfford: true,
-      missingCoins: 0,
-    });
+    expect((await renderAccess(freeEpisode)).isUnlocked).toBe(true);
   });
 
-  it('reports a locked episode the user cannot afford', async () => {
-    expect(await renderAccess()).toEqual({
-      isUnlocked: false,
-      cost: DEMO_CONFIG.episodePriceCoins,
-      canAfford: false,
-      missingCoins: DEMO_CONFIG.episodePriceCoins - DEMO_CONFIG.startingCoinBalance,
-    });
-  });
-
-  it('reports a locked episode the user can afford', async () => {
-    store.set(creditCoinsAtom, 300);
-    expect(await renderAccess()).toMatchObject({
-      isUnlocked: false,
-      canAfford: true,
-      missingCoins: 0,
-    });
+  it('reports a paid episode as locked', async () => {
+    expect((await renderAccess()).isUnlocked).toBe(false);
   });
 
   it('unlocks with an ad or a membership', async () => {
@@ -62,6 +42,6 @@ describe('useEpisodeAccess', () => {
     clearStorage();
     store = createStore();
     store.set(activateMembershipAtom, 'premium-monthly');
-    expect(await renderAccess(makeEpisode(30))).toMatchObject({ isUnlocked: true, cost: 0 });
+    expect((await renderAccess(makeEpisode(30))).isUnlocked).toBe(true);
   });
 });

@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 
 import { createMockRepositories, RepositoryError } from '@/data';
 import type { Repositories } from '@/data';
-import { coinBalanceAtom, membershipAtom, resetDemoAtom, unlockedEpisodeIdsAtom } from '@/state';
+import { coinBalanceAtom, entitlementsAtom, resetDemoAtom, unlockedEpisodeIdsAtom } from '@/state';
 import { createTestWrapper } from '@/test/queryTestUtils';
 
 import { StoreScreen } from '../StoreScreen';
@@ -117,7 +117,7 @@ describe('StoreScreen', () => {
 
     await fireEvent.press(screen.getByRole('button', { name: 'Start VIP, for €4.99/week' }));
 
-    expect(store.get(membershipAtom).status).toBe('active');
+    expect(store.get(entitlementsAtom).membership.status).toBe('active');
     expect(store.get(coinBalanceAtom)).toBe(15);
     expect(router.dismiss).toHaveBeenCalledWith(2);
   });

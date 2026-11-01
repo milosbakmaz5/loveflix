@@ -13,7 +13,7 @@ export type MockRepositoryOptions = {
   shouldFail?: (operation: RepositoryOperation) => boolean;
 };
 
-export type Simulate = <T>(operation: RepositoryOperation, produce: () => T) => Promise<T>;
+type Simulate = <T>(operation: RepositoryOperation, produce: () => T) => Promise<T>;
 
 function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));

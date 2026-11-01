@@ -1,4 +1,4 @@
-export type RepositoryErrorKind = 'network' | 'notFound';
+type RepositoryErrorKind = 'network' | 'notFound';
 
 /** The only error type repositories throw, so screens can tell "retry" from "not found". */
 export class RepositoryError extends Error {

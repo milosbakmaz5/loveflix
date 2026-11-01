@@ -39,3 +39,8 @@ export const monthlyPlan: MembershipPlan = {
   price: { amountMinor: 999, currency: 'USD' },
   period: 'month',
 };
+
+export const NO_ENTITLEMENTS: Entitlements = {
+  unlockedEpisodeIds: new Set(),
+  membership: { status: 'none' },
+};

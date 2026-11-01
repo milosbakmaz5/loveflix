@@ -20,7 +20,7 @@ export const syncStorage = {
 };
 
 /** Synchronous storage in the shape `atomWithStorage` expects. */
-export type AtomStorage<Value> = {
+type AtomStorage<Value> = {
   getItem: (key: string, initialValue: Value) => Value;
   setItem: (key: string, value: Value) => void;
   removeItem: (key: string) => void;
@@ -42,8 +42,4 @@ export function createAtomStorage<Value>(
     setItem: (key, value) => json.setItem(key, value),
     removeItem: (key) => json.removeItem(key),
   };
-}
-
-export function clearStorage(): void {
-  mmkv.clearAll();
 }

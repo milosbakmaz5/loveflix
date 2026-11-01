@@ -3,18 +3,13 @@ import {
   buildEpisodeOption,
   buildSeasonOption,
   buildUnlockOptions,
-  findFirstLockedEpisode,
   getEpisodeCost,
-  getLockedEpisodes,
-  getOptionCoinCost,
   grantEpisodes,
   isEpisodeUnlocked,
-  NO_ENTITLEMENTS,
   unlockWithCoins,
-  type UnlockOption,
 } from '@/domain';
 
-import { entitlements, monthlyPlan, season } from './fixtures';
+import { entitlements, monthlyPlan, NO_ENTITLEMENTS, season } from './fixtures';
 
 const ep4 = season[3]!;
 const ep5 = season[4]!;
@@ -32,26 +27,6 @@ describe('isEpisodeUnlocked', () => {
 
   it('an active membership unlocks everything', () => {
     expect(isEpisodeUnlocked(ep5, entitlements([], activateMembership('premium')))).toBe(true);
-  });
-});
-
-describe('getLockedEpisodes / findFirstLockedEpisode', () => {
-  it('returns locked episodes in order, whatever the input order', () => {
-    const shuffled = [...season].reverse();
-    expect(getLockedEpisodes(shuffled, NO_ENTITLEMENTS).map((e) => e.number)).toEqual([
-      5, 6, 7, 8, 9, 10,
-    ]);
-  });
-
-  it('the first locked episode is the one after the cliffhanger', () => {
-    expect(findFirstLockedEpisode(season, NO_ENTITLEMENTS)).toBe(ep5);
-    expect(findFirstLockedEpisode(season, entitlements(['s1-e5']))).toBe(ep6);
-  });
-
-  it('is undefined when everything is unlocked', () => {
-    expect(findFirstLockedEpisode(season, entitlements([], activateMembership('p')))).toBe(
-      undefined,
-    );
   });
 });
 
@@ -113,17 +88,6 @@ describe('buildUnlockOptions', () => {
       seasonDiscountRate: 0.4,
     });
     expect(options.map((o) => o.type)).toEqual(['episode', 'ad']);
-  });
-});
-
-describe('getOptionCoinCost', () => {
-  it.each<[UnlockOption, number | null]>([
-    [{ type: 'episode', episodeId: 'e', cost: 20 }, 20],
-    [{ type: 'season', seriesId: 's', fromEpisode: 1, toEpisode: 2, episodeIds: [], cost: 30 }, 30],
-    [{ type: 'membership', plan: monthlyPlan }, null],
-    [{ type: 'ad', episodeId: 'e' }, null],
-  ])('%o → %s', (option, expected) => {
-    expect(getOptionCoinCost(option)).toBe(expected);
   });
 });
 

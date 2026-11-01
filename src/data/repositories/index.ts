@@ -5,10 +5,9 @@ import type { MockRepositoryOptions } from './simulate';
 import type { StoreRepository } from './StoreRepository';
 
 export type { CatalogRepository, HomeFeedData } from './CatalogRepository';
-export { isRepositoryError, RepositoryError, type RepositoryErrorKind } from './errors';
+export { isRepositoryError, RepositoryError } from './errors';
 export { createMockCatalogRepository } from './MockCatalogRepository';
 export { createMockStoreRepository } from './MockStoreRepository';
-export type { MockRepositoryOptions, RepositoryOperation } from './simulate';
 export type {
   CoinPurchaseReceipt,
   SeasonPurchaseReceipt,

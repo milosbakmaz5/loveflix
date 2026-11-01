@@ -13,7 +13,6 @@ import { PressableScale } from './PressableScale';
 
 type CardProps = {
   children: ReactNode;
-  variant?: 'surface' | 'raised';
   /** Cyan outline + highlighted fill. */
   selected?: boolean;
   /** `brand` = teal fill (selected coin pack); `default` = slate (selected unlock option). */
@@ -27,7 +26,6 @@ type CardProps = {
 
 export function Card({
   children,
-  variant = 'surface',
   selected = false,
   selectedTone = 'default',
   padding = 'md',
@@ -38,7 +36,6 @@ export function Card({
 }: CardProps) {
   const cardStyle = [
     styles.card,
-    variant === 'raised' && styles.raised,
     selected && styles.selected,
     selected && selectedTone === 'brand' && styles.selectedBrand,
     { padding: spacing[padding] },
@@ -67,9 +64,6 @@ const styles = StyleSheet.create({
     borderRadius: radii.lg,
     borderWidth: StyleSheet.hairlineWidth * 2,
     borderColor: borderColors.default,
-  },
-  raised: {
-    backgroundColor: backgroundColors.surfaceRaised,
   },
   selected: {
     backgroundColor: backgroundColors.surfaceSelected,

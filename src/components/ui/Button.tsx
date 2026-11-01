@@ -19,8 +19,8 @@ import { Icon } from './Icon';
 import { PressableScale } from './PressableScale';
 import { Text } from './Text';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'premium' | 'ghost';
-type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonVariant = 'primary' | 'secondary' | 'premium' | 'ghost';
+type ButtonSize = 'md' | 'lg';
 
 type ButtonProps = {
   label: string;
@@ -33,10 +33,8 @@ type ButtonProps = {
   /** Second line under the label ("for €6.99"). */
   sublabel?: string;
   loading?: boolean;
-  disabled?: boolean;
   fullWidth?: boolean;
   haptic?: boolean;
-  accessibilityHint?: string;
 };
 
 const CONTENT_COLORS: Record<ButtonVariant, { text: TextColor; icon: IconColor }> = {
@@ -55,13 +53,10 @@ export function Button({
   icon,
   sublabel,
   loading = false,
-  disabled = false,
   fullWidth = false,
   haptic = false,
-  accessibilityHint,
 }: ButtonProps) {
   const colors = CONTENT_COLORS[variant];
-  const isInactive = disabled || loading;
   const radius = shape === 'pill' ? radii.pill : radii.md;
   const sizeStyle = sublabel ? styles.withSublabel : styles[size];
 
@@ -71,12 +66,12 @@ export function Button({
         {loading ? (
           <ActivityIndicator size="small" color={iconColors[colors.icon]} />
         ) : (
-          icon && <Icon icon={icon} size={size === 'sm' ? 'sm' : 'md'} color={colors.icon} />
+          icon && <Icon icon={icon} size="md" color={colors.icon} />
         )}
         {variant === 'premium' ? (
           <GradientText variant="buttonLarge">{label}</GradientText>
         ) : (
-          <Text variant={size === 'sm' ? 'bodySmall' : 'bodyStrong'} color={colors.text}>
+          <Text variant="bodyStrong" color={colors.text}>
             {label}
           </Text>
         )}
@@ -92,11 +87,10 @@ export function Button({
   return (
     <PressableScale
       onPress={onPress}
-      disabled={isInactive}
+      disabled={loading}
       haptic={haptic}
       accessibilityRole="button"
       accessibilityLabel={sublabel ? `${label}, ${sublabel}` : label}
-      accessibilityHint={accessibilityHint}
       accessibilityState={{ busy: loading }}
       style={fullWidth && styles.fullWidth}
     >
@@ -107,7 +101,7 @@ export function Button({
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           // Dimming lives on the inner view: PressableScale animates the outer opacity.
-          style={[styles.gradientBorder, { borderRadius: radius }, isInactive && styles.inactive]}
+          style={[styles.gradientBorder, { borderRadius: radius }, loading && styles.inactive]}
         >
           <View style={[styles.premiumFill, { borderRadius: radius - GRADIENT_BORDER }]}>
             {content}
@@ -119,8 +113,8 @@ export function Button({
             surfaceStyles[variant],
             { borderRadius: radius },
             // The glow sits on the solid surface so iOS can compute the shadow cheaply.
-            variant === 'primary' && !isInactive && elevation.glowPrimary,
-            isInactive && styles.inactive,
+            variant === 'primary' && !loading && elevation.glowPrimary,
+            loading && styles.inactive,
           ]}
         >
           {content}
@@ -154,7 +148,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: spacing.xs,
   },
-  sm: { minHeight: 36, paddingHorizontal: spacing.md },
   md: { minHeight: 44 },
   lg: { minHeight: 52 },
   withSublabel: { minHeight: 60, paddingVertical: spacing.xs },

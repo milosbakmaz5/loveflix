@@ -2,7 +2,7 @@ import { Text as RNText, StyleSheet, type TextProps as RNTextProps } from 'react
 
 import { textColors, typography, type TextColor, type TypographyVariant } from '@/theme';
 
-export type TextProps = RNTextProps & {
+type TextProps = RNTextProps & {
   variant?: TypographyVariant;
   color?: TextColor;
   align?: 'left' | 'center' | 'right';

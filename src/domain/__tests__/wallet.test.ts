@@ -1,11 +1,4 @@
-import {
-  canAfford,
-  findPackCovering,
-  getMissingCoins,
-  spendCoins,
-  topUp,
-  totalCoins,
-} from '@/domain';
+import { canAfford, findPackCovering, getMissingCoins, spendCoins, totalCoins } from '@/domain';
 
 import { packs } from './fixtures';
 
@@ -13,14 +6,9 @@ const p300 = packs[1]!;
 const p800 = packs[0]!;
 const p2500 = packs[2]!;
 
-describe('totalCoins / topUp', () => {
+describe('totalCoins', () => {
   it('includes the bonus coins', () => {
     expect(totalCoins(p800)).toBe(850);
-    expect(topUp(15, p800)).toBe(865);
-  });
-
-  it('rejects an invalid starting balance', () => {
-    expect(() => topUp(-1, p300)).toThrow(RangeError);
   });
 });
 
