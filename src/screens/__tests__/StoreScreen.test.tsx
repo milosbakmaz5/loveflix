@@ -7,6 +7,7 @@ import type { ReactNode } from 'react';
 import { createMockRepositories, RepositoryError } from '@/data';
 import type { Repositories } from '@/data';
 import { coinBalanceAtom, entitlementsAtom, resetDemoAtom, unlockedEpisodeIdsAtom } from '@/state';
+import { createGate } from '@/test/createGate';
 import { createTestWrapper } from '@/test/queryTestUtils';
 
 import { StoreScreen } from '../StoreScreen';
@@ -171,10 +172,17 @@ describe('StoreScreen', () => {
   });
 
   it('shows the loading state first and keeps the back button', async () => {
-    await renderStore();
+    const repositories = createMockRepositories({ latencyMs: 0 });
+    const getCoinPacks = repositories.store.getCoinPacks;
+    const gate = createGate();
+    jest
+      .spyOn(repositories.store, 'getCoinPacks')
+      .mockImplementation(() => gate.opened.then(() => getCoinPacks()));
+    await renderStore({ repositories });
 
     expect(screen.getByLabelText('Loading…')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Back' })).toBeOnTheScreen();
+    gate.open();
     await act(async () => {
       await screen.findByText('Your Balance');
     });

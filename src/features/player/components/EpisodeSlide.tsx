@@ -61,7 +61,7 @@ export function EpisodeSlide({
       {hasVideo ? (
         <EpisodeVideo
           key={`${episode.id}-${videoAttempt}`}
-          uri={episode.videoUri}
+          source={episode.video}
           shouldPlay={!isPaused}
           onFinished={onFinished}
           onRetry={() => setVideoAttempt((attempt) => attempt + 1)}

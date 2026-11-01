@@ -1,4 +1,4 @@
-import type { ImageRef } from '@/domain';
+import type { ImageRef, VideoRef } from '@/domain';
 
 // Artwork exported from the Figma design (original source images, resized for phones).
 export const images = {
@@ -27,8 +27,10 @@ export const images = {
   },
 } as const satisfies Record<string, Record<string, ImageRef>>;
 
-// Public HLS test streams (verified reachable). Episodes cycle through them.
+// Placeholder clips made from the design's episode artwork, bundled so playback needs no network.
+// Episodes cycle through them.
 export const VIDEO_SOURCES = [
-  'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
-  'https://test-streams.mux.dev/tos_ismc/main.m3u8',
-] as const;
+  require('../../../assets/videos/clip-1.mp4'),
+  require('../../../assets/videos/clip-2.mp4'),
+  require('../../../assets/videos/clip-3.mp4'),
+] as const satisfies readonly VideoRef[];

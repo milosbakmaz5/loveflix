@@ -4,12 +4,14 @@ import { useVideoPlayer, type VideoPlayer } from 'expo-video';
 import { useEffect, useState } from 'react';
 import { type SharedValue, useSharedValue } from 'react-native-reanimated';
 
+import type { VideoRef } from '@/domain';
+
 import { getPlayableDuration } from '../utils/playbackTime';
 
 export const TIME_UPDATE_INTERVAL_SEC = 0.25;
 
 type EpisodePlayerOptions = {
-  uri: string;
+  source: VideoRef;
   shouldPlay: boolean;
   onFinished: () => void;
 };
@@ -28,11 +30,11 @@ type EpisodePlayerState = {
 
 /** Owns one player: released on unmount, paused off-screen, stopped at the demo playback cap. */
 export function useEpisodePlayer({
-  uri,
+  source,
   shouldPlay,
   onFinished,
 }: EpisodePlayerOptions): EpisodePlayerState {
-  const player = useVideoPlayer(uri, (created) => {
+  const player = useVideoPlayer(source, (created) => {
     created.timeUpdateEventInterval = TIME_UPDATE_INTERVAL_SEC;
   });
   const isFocused = useIsFocused();

@@ -12,10 +12,12 @@ import { Text } from './Text';
 type ErrorStateProps = {
   /** The query error; decides between "not found" and "couldn't load". */
   error: unknown;
+  /** Replaces the "couldn't load" text when the cause isn't a request (video playback). */
+  message?: string;
   onRetry?: () => void;
 };
 
-export function ErrorState({ error, onRetry }: ErrorStateProps) {
+export function ErrorState({ error, message, onRetry }: ErrorStateProps) {
   const { t } = useTranslation();
   const isNotFound = isRepositoryError(error) && error.kind === 'notFound';
 
@@ -23,7 +25,7 @@ export function ErrorState({ error, onRetry }: ErrorStateProps) {
     <StateView>
       <Icon icon={isNotFound ? SearchX : CloudOff} size="lg" color="secondary" />
       <Text variant="body" color="secondary" align="center" accessibilityRole="alert">
-        {t(isNotFound ? 'states.notFound' : 'states.error')}
+        {message ?? t(isNotFound ? 'states.notFound' : 'states.error')}
       </Text>
       {/* Retrying cannot bring back something that doesn't exist. */}
       {onRetry && !isNotFound && (

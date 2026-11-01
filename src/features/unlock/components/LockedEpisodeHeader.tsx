@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { Lock } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 
 import { Icon, Text } from '@/components/ui';
 import type { Episode } from '@/domain';
@@ -13,10 +13,11 @@ type LockedEpisodeHeaderProps = {
 
 export function LockedEpisodeHeader({ episode }: LockedEpisodeHeaderProps) {
   const { t } = useTranslation();
+  const { height } = useWindowDimensions();
 
   return (
     <View style={styles.header}>
-      <View style={styles.thumbnail}>
+      <View style={[styles.thumbnail, height < SHORT_SCREEN_HEIGHT && styles.thumbnailSmall]}>
         <Image source={episode.thumbnail} style={StyleSheet.absoluteFill} contentFit="cover" />
         <View style={styles.dim}>
           <View style={styles.lock}>
@@ -40,6 +41,8 @@ export function LockedEpisodeHeader({ episode }: LockedEpisodeHeaderProps) {
   );
 }
 
+/** Below this the card can't fit everything (iPhone 13 mini and smaller). */
+const SHORT_SCREEN_HEIGHT = 850;
 const LOCK_SIZE = 36;
 
 const styles = StyleSheet.create({
@@ -52,6 +55,10 @@ const styles = StyleSheet.create({
     height: 130,
     borderRadius: radii.sm,
     overflow: 'hidden',
+  },
+  thumbnailSmall: {
+    width: 70,
+    height: 91,
   },
   dim: {
     ...StyleSheet.absoluteFill,

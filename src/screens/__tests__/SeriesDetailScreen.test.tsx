@@ -7,6 +7,7 @@ import type { ReactNode } from 'react';
 import { createMockRepositories, RepositoryError } from '@/data';
 import type { Repositories } from '@/data';
 import { activateMembershipAtom, resetDemoAtom, unlockedEpisodeIdsAtom } from '@/state';
+import { createGate } from '@/test/createGate';
 import { createTestWrapper } from '@/test/queryTestUtils';
 
 import { SeriesDetailScreen } from '../SeriesDetailScreen';
@@ -201,10 +202,19 @@ describe('SeriesDetailScreen', () => {
   });
 
   it('shows the loading state first and keeps the back button', async () => {
-    await render(<SeriesDetailScreen seriesId={SERIES_ID} />, { wrapper: createTestWrapper() });
+    const repositories = createMockRepositories({ latencyMs: 0 });
+    const getEpisodes = repositories.catalog.getEpisodes;
+    const gate = createGate();
+    jest
+      .spyOn(repositories.catalog, 'getEpisodes')
+      .mockImplementation((id) => gate.opened.then(() => getEpisodes(id)));
+    await render(<SeriesDetailScreen seriesId={SERIES_ID} />, {
+      wrapper: createTestWrapper({ repositories }),
+    });
 
     expect(screen.getByLabelText('Loading…')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Back' })).toBeOnTheScreen();
+    gate.open();
     expect(await screen.findByRole('button', { name: 'Play Ep 1' })).toBeOnTheScreen();
   });
 

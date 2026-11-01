@@ -24,8 +24,8 @@
     "posterLabel_other": "{{title}}, {{count}} Folgen",
     "posterLabelPro_one": "{{title}}, {{count}} Folge, Premium",
     "posterLabelPro_other": "{{title}}, {{count}} Folgen, Premium",
-    "episodes_one": "{{count}} Episode",
-    "episodes_other": "{{count}} Episoden",
+    "episodes_one": "{{count}} Folge",
+    "episodes_other": "{{count}} Folgen",
     "rating": "Bewertung {{rating}}",
     "playEpisode": "Folge {{number}} abspielen",
     "synopsis": "Handlung",
@@ -77,6 +77,7 @@
     "resetDemo": "Demo zurücksetzen"
   },
   "player": {
+    "videoError": "Dieses Video konnte nicht abgespielt werden. Bitte versuche es erneut.",
     "watch": "Ansehen",
     "episodeNumber": "Folge {{number}}",
     "unlockEpisode": "Folge {{number}} freischalten",
@@ -98,18 +99,19 @@
     "episode": "Folge {{number}}",
     "title": "Die Romanze geht weiter",
     "subtitle": "Schalte alle Folgen frei und erfahre, wie ihre Reise weitergeht.",
-    "episodeOption": "Folge freischalten",
+    "episodeOption": "Einzelne Folge",
     "episodeOptionDetail": "Einmaliger Zugang",
     "seasonOption": "Ganze Staffel freischalten",
+    "seasonRow": "Ganze Staffel",
     "seasonOptionDetail": "Folgen {{from}} - {{to}}",
-    "membershipOption": "Premium-Mitgliedschaft",
-    "membershipOptionDetail": "Unbegrenzter Zugang",
+    "membershipOption": "Premium-Abo",
+    "membershipOptionDetail": "Voller Zugang",
     "pricePer": {
       "month": "{{price}}/Mon.",
       "week": "{{price}}/Wo."
     },
     "confirm": "Jetzt freischalten",
-    "watchAd": "Werbung ansehen und kostenlos freischalten",
+    "watchAd": "Mit Werbung freischalten",
     "dismiss": "Vielleicht später"
   },
   "store": {

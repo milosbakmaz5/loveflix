@@ -7,6 +7,7 @@ import {
   type EpisodeId,
   grantEpisodes,
   type MembershipPlanId,
+  type SeriesId,
   unlockWithCoins,
   type UnlockResult,
 } from '@/domain';
@@ -17,6 +18,7 @@ import {
   storedUnlockedEpisodeIdsAtom,
   unlockedEpisodeIdsAtom,
 } from './entitlements.atoms';
+import { storedMyListSeriesIdsAtom } from './myList.atoms';
 import { storedCoinBalanceAtom } from './wallet.atoms';
 
 /**
@@ -59,8 +61,17 @@ export const activateMembershipAtom = atom(null, (_get, set, planId: MembershipP
 });
 
 /** Back to the first-launch state, so the unlock flow can be demoed again. */
+export const toggleMyListAtom = atom(null, (get, set, seriesId: SeriesId): void => {
+  const ids = get(storedMyListSeriesIdsAtom);
+  set(
+    storedMyListSeriesIdsAtom,
+    ids.includes(seriesId) ? ids.filter((id) => id !== seriesId) : [...ids, seriesId],
+  );
+});
+
 export const resetDemoAtom = atom(null, (_get, set): void => {
   set(storedCoinBalanceAtom, RESET);
   set(storedUnlockedEpisodeIdsAtom, RESET);
   set(storedMembershipAtom, RESET);
+  set(storedMyListSeriesIdsAtom, RESET);
 });

@@ -4,9 +4,8 @@ import { StyleSheet, View } from 'react-native';
 
 import { Icon, IconButton } from '@/components/ui';
 import type { SeriesId } from '@/domain';
+import { useMyList } from '@/state';
 import { backgroundColors, spacing } from '@/theme';
-
-import { useMyList } from '../hooks/useMyList';
 
 type SeriesHeaderActionsProps = {
   seriesId: SeriesId;

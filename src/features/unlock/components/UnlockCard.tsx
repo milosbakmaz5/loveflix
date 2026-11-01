@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { backgroundColors, borderColors, radii, spacing } from '@/theme';
@@ -30,13 +30,7 @@ export function UnlockCard({ children }: UnlockCardProps) {
         onPress={() => router.back()}
       />
       <View style={styles.card} accessibilityViewIsModal>
-        <ScrollView
-          bounces={false}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.content}
-        >
-          {children}
-        </ScrollView>
+        {children}
       </View>
     </View>
   );
@@ -59,8 +53,5 @@ const styles = StyleSheet.create({
     borderColor: borderColors.default,
     backgroundColor: backgroundColors.surfaceRaised,
     overflow: 'hidden',
-  },
-  content: {
-    padding: spacing.xl,
   },
 });

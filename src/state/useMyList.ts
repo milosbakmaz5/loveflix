@@ -2,7 +2,8 @@ import { useAtomValue, useSetAtom } from 'jotai';
 
 import type { SeriesId } from '@/domain';
 
-import { myListSeriesIdsAtom, toggleMyListAtom } from '../state/myList.atom';
+import { toggleMyListAtom } from './actions.atoms';
+import { myListSeriesIdsAtom } from './myList.atoms';
 
 type MyListEntry = {
   isInList: boolean;

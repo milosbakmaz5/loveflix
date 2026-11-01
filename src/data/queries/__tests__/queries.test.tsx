@@ -12,6 +12,7 @@ import {
   useRepositories,
   useSeries,
 } from '@/data';
+import { createGate } from '@/test/createGate';
 import { createTestQueryClient, createTestWrapper } from '@/test/queryTestUtils';
 
 const BILLIONAIRES_SECRET = 'billionaires-secret';
@@ -22,9 +23,18 @@ function failingRepositories(): Repositories {
 
 describe('catalog queries', () => {
   it('useHomeFeed loads the feed and its series', async () => {
-    const { result } = await renderHook(() => useHomeFeed(), { wrapper: createTestWrapper() });
+    const repositories = createMockRepositories({ latencyMs: 0 });
+    const getHomeFeed = repositories.catalog.getHomeFeed;
+    const gate = createGate();
+    jest
+      .spyOn(repositories.catalog, 'getHomeFeed')
+      .mockImplementation(() => gate.opened.then(() => getHomeFeed()));
+    const { result } = await renderHook(() => useHomeFeed(), {
+      wrapper: createTestWrapper({ repositories }),
+    });
 
     expect(result.current.isPending).toBe(true);
+    gate.open();
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
     expect(result.current.data?.series.length).toBeGreaterThan(0);
   });

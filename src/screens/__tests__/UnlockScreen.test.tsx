@@ -12,6 +12,7 @@ import {
   resetDemoAtom,
   unlockedEpisodeIdsAtom,
 } from '@/state';
+import { createGate } from '@/test/createGate';
 import { createTestWrapper } from '@/test/queryTestUtils';
 
 import { UnlockScreen } from '../UnlockScreen';
@@ -163,9 +164,16 @@ describe('UnlockScreen', () => {
   });
 
   it('shows the loading state first', async () => {
-    await renderUnlock();
+    const repositories = createMockRepositories({ latencyMs: 0 });
+    const getPlans = repositories.store.getMembershipPlans;
+    const gate = createGate();
+    jest
+      .spyOn(repositories.store, 'getMembershipPlans')
+      .mockImplementation(() => gate.opened.then(() => getPlans()));
+    await renderUnlock({ repositories });
 
     expect(screen.getByLabelText('Loading…')).toBeOnTheScreen();
+    gate.open();
     expect(await screen.findByText('Episode 5')).toBeOnTheScreen();
   });
 

@@ -43,7 +43,7 @@ function createFakePlayer(): FakeVideoPlayer {
 }
 
 export function useVideoPlayer(
-  _source: string,
+  _source: unknown,
   setup?: (player: FakeVideoPlayer) => void,
 ): FakeVideoPlayer {
   const [player] = useState(() => {

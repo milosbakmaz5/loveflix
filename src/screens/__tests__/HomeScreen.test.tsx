@@ -48,7 +48,7 @@ describe('HomeScreen', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Watch now' }));
     expect(router.push).toHaveBeenCalledWith({
       pathname: '/watch/[seriesId]',
-      params: { seriesId: 'echoes-of-eternity' },
+      params: { seriesId: 'echoes-of-eternity', autoplay: 'true' },
     });
 
     await fireEvent.press(

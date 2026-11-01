@@ -2,8 +2,7 @@ import { createStore } from 'jotai';
 
 import { DEMO_CONFIG } from '@/config/demo';
 import { buildEpisodeOption, buildSeasonOption, isEpisodeUnlocked } from '@/domain';
-import { makeEpisode, season } from '@/domain/__tests__/fixtures';
-import { NO_ENTITLEMENTS } from '@/domain/__tests__/fixtures';
+import { makeEpisode, NO_ENTITLEMENTS, season } from '@/domain/__tests__/fixtures';
 import { STORAGE_KEYS, syncStorage } from '@/lib/storage';
 import { clearStorage } from '@/test/clearStorage';
 
@@ -12,7 +11,9 @@ import {
   coinBalanceAtom,
   creditCoinsAtom,
   entitlementsAtom,
+  myListSeriesIdsAtom,
   resetDemoAtom,
+  toggleMyListAtom,
   unlockedEpisodeIdsAtom,
   unlockWithAdAtom,
   unlockWithCoinsAtom,
@@ -128,16 +129,29 @@ describe('activateMembershipAtom', () => {
   });
 });
 
+describe('toggleMyListAtom', () => {
+  it('adds a series, then removes it, and saves the list', () => {
+    store.set(toggleMyListAtom, 's1');
+    expect(store.get(myListSeriesIdsAtom)).toEqual(['s1']);
+    expect(syncStorage.getItem(STORAGE_KEYS.myListSeriesIds)).toBe('["s1"]');
+
+    store.set(toggleMyListAtom, 's1');
+    expect(store.get(myListSeriesIdsAtom)).toEqual([]);
+  });
+});
+
 describe('resetDemoAtom', () => {
   it('returns to the first-launch state and clears the saved values', () => {
     store.set(creditCoinsAtom, 300);
     store.set(unlockWithCoinsAtom, buildEpisodeOption(episode5));
     store.set(activateMembershipAtom, 'premium-monthly');
+    store.set(toggleMyListAtom, 's1');
 
     store.set(resetDemoAtom);
 
     expect(store.get(entitlementsAtom)).toEqual(NO_ENTITLEMENTS);
     expect(store.get(coinBalanceAtom)).toBe(DEMO_CONFIG.startingCoinBalance);
+    expect(store.get(myListSeriesIdsAtom)).toEqual([]);
     for (const key of Object.values(STORAGE_KEYS)) {
       expect(syncStorage.getItem(key)).toBeNull();
     }

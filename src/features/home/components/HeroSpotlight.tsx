@@ -2,12 +2,12 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { Check, Play, Plus, Star } from 'lucide-react-native';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 
 import { Badge, Button, Icon, IconButton, MetaRow, Text } from '@/components/ui';
 import type { Series } from '@/domain';
+import { useMyList } from '@/state';
 import { backgroundColors, gradients, layout, spacing } from '@/theme';
 
 type HeroSpotlightProps = {
@@ -20,8 +20,7 @@ const HERO_RATIO = 1.25;
 export function HeroSpotlight({ series }: HeroSpotlightProps) {
   const { t } = useTranslation();
   const { width } = useWindowDimensions();
-  // Local only: the Library that would show the list is out of scope.
-  const [isInList, setIsInList] = useState(false);
+  const { isInList, toggle } = useMyList(series.id);
 
   return (
     <View style={{ height: width * HERO_RATIO }}>
@@ -72,7 +71,10 @@ export function HeroSpotlight({ series }: HeroSpotlightProps) {
               haptic
               fullWidth
               onPress={() =>
-                router.push({ pathname: '/watch/[seriesId]', params: { seriesId: series.id } })
+                router.push({
+                  pathname: '/watch/[seriesId]',
+                  params: { seriesId: series.id, autoplay: 'true' },
+                })
               }
             />
           </View>
@@ -80,8 +82,9 @@ export function HeroSpotlight({ series }: HeroSpotlightProps) {
             icon={isInList ? Check : Plus}
             size="lg"
             color={isInList ? 'brand' : 'primary'}
+            selected={isInList}
             accessibilityLabel={t(isInList ? 'home.removeFromList' : 'home.addToList')}
-            onPress={() => setIsInList((value) => !value)}
+            onPress={toggle}
           />
         </View>
       </View>

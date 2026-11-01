@@ -72,7 +72,7 @@ export function createEpisodes(series: Series): Episode[] {
       title: cycle(TITLE_POOL, index),
       durationSec: durationFor(series, number),
       thumbnail: thumbnailFor(series, number),
-      videoUri: cycle(VIDEO_SOURCES, index),
+      video: cycle(VIDEO_SOURCES, index),
       access: accessFor(number),
       likeCount: DESIGN_LIKE_COUNT,
       commentCount: DESIGN_COMMENT_COUNT,

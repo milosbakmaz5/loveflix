@@ -1,9 +1,11 @@
 import { VideoView } from 'expo-video';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { ErrorState } from '@/components/ui';
+import type { VideoRef } from '@/domain';
 import { iconColors } from '@/theme';
 
 import { useEpisodePlayer } from '../hooks/useEpisodePlayer';
@@ -13,7 +15,7 @@ import { VideoGestureSurface } from './VideoGestureSurface';
 import { VideoProgressBar } from './VideoProgressBar';
 
 type EpisodeVideoProps = {
-  uri: string;
+  source: VideoRef;
   shouldPlay: boolean;
   onFinished: () => void;
   onRetry: () => void;
@@ -22,14 +24,15 @@ type EpisodeVideoProps = {
 
 /** The single VideoView of the feed and its controls. Fades in once its first frame is ready. */
 export function EpisodeVideo({
-  uri,
+  source,
   shouldPlay,
   onFinished,
   onRetry,
   onTogglePause,
 }: EpisodeVideoProps) {
+  const { t } = useTranslation();
   const { player, hasFailed, currentTime, duration, seekBy, startScrub, endScrub } =
-    useEpisodePlayer({ uri, shouldPlay, onFinished });
+    useEpisodePlayer({ source, shouldPlay, onFinished });
   const [hasFirstFrame, setHasFirstFrame] = useState(false);
   const fadeStyle = useAnimatedStyle(() => ({ opacity: withTiming(hasFirstFrame ? 1 : 0) }));
 
@@ -47,7 +50,7 @@ export function EpisodeVideo({
       <EpisodeTopScrim />
       <EpisodeScrim />
       <VideoGestureSurface isPaused={!shouldPlay} onTogglePause={onTogglePause} onSeekBy={seekBy} />
-      {hasFailed && <ErrorState error={null} onRetry={onRetry} />}
+      {hasFailed && <ErrorState error={null} message={t('player.videoError')} onRetry={onRetry} />}
       {!hasFailed && !hasFirstFrame && (
         <View style={styles.loading} pointerEvents="none">
           <ActivityIndicator color={iconColors.primary} />

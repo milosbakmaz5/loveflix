@@ -9,6 +9,9 @@ export type MembershipPlanId = string;
 /** A bundled asset (`require(...)` result) or a remote URL. */
 export type ImageRef = number | { uri: string };
 
+/** A bundled asset (`require(...)` result) or a remote URL. */
+export type VideoRef = number | { uri: string };
+
 export type Currency = 'EUR' | 'USD';
 
 export type Money = {
@@ -63,7 +66,7 @@ export type Episode = {
   title: string;
   durationSec: number;
   thumbnail: ImageRef;
-  videoUri: string;
+  video: VideoRef;
   access: EpisodeAccess;
   likeCount: number;
   commentCount: number;

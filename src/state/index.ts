@@ -9,9 +9,12 @@ export {
   creditCoinsAtom,
   grantEpisodesAtom,
   resetDemoAtom,
+  toggleMyListAtom,
   unlockWithAdAtom,
   unlockWithCoinsAtom,
 } from './actions.atoms';
 export { entitlementsAtom, unlockedEpisodeIdsAtom } from './entitlements.atoms';
 export { useEpisodeAccess } from './useEpisodeAccess';
+export { myListSeriesIdsAtom } from './myList.atoms';
+export { useMyList } from './useMyList';
 export { coinBalanceAtom } from './wallet.atoms';

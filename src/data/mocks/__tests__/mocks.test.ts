@@ -87,7 +87,7 @@ describe('createEpisodes', () => {
 
   it('uses known video sources and positive durations', () => {
     for (const episode of episodes) {
-      expect(VIDEO_SOURCES).toContain(episode.videoUri);
+      expect(VIDEO_SOURCES).toContain(episode.video);
       expect(episode.durationSec).toBeGreaterThan(0);
     }
   });

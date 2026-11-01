@@ -20,7 +20,7 @@ async function renderPlayer(shouldPlay = true) {
   const onFinished = jest.fn();
   const view = await renderHook(
     (props: { shouldPlay: boolean }) =>
-      useEpisodePlayer({ uri: 'https://example.com/a.m3u8', onFinished, ...props }),
+      useEpisodePlayer({ source: { uri: 'https://example.com/a.m3u8' }, onFinished, ...props }),
     { initialProps: { shouldPlay } },
   );
   return { ...view, onFinished, player: lastPlayer() };

@@ -77,6 +77,7 @@
     "resetDemo": "Reset demo"
   },
   "player": {
+    "videoError": "This video couldn't play. Please try again.",
     "watch": "Watch",
     "episodeNumber": "Ep {{number}}",
     "unlockEpisode": "Unlock Episode {{number}}",
@@ -101,6 +102,7 @@
     "episodeOption": "Unlock Episode",
     "episodeOptionDetail": "One-time access",
     "seasonOption": "Unlock Full Season",
+    "seasonRow": "Unlock Full Season",
     "seasonOptionDetail": "Episodes {{from}} - {{to}}",
     "membershipOption": "Premium Membership",
     "membershipOptionDetail": "Unlimited access",

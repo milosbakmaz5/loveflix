@@ -10,7 +10,7 @@ export function makeEpisode(number: number, overrides: Partial<Episode> = {}): E
     title: `Episode ${number}`,
     durationSec: 120,
     thumbnail: IMAGE,
-    videoUri: 'https://example.com/video.m3u8',
+    video: { uri: 'https://example.com/video.m3u8' },
     access: number <= 4 ? { type: 'free' } : { type: 'coins', price: 20 },
     likeCount: 12000,
     commentCount: 342,

@@ -44,5 +44,6 @@ const styles = StyleSheet.create({
   // About the height of the loaded content, so the card doesn't jump when it arrives.
   state: {
     height: 709,
+    flexShrink: 1,
   },
 });

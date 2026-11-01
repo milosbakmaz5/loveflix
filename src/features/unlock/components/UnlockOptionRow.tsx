@@ -30,7 +30,7 @@ function useRowCopy(option: SheetOption): RowCopy {
       };
     case 'season':
       return {
-        title: t('unlock.seasonOption'),
+        title: t('unlock.seasonRow'),
         subtitle: t('unlock.seasonOptionDetail', {
           from: option.fromEpisode,
           to: option.toEpisode,
